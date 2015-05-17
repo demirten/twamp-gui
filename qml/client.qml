@@ -168,7 +168,7 @@ ApplicationWindow {
             }
 
             Rectangle {
-                height: 34
+                height: 32
                 anchors.margins: window.margin
                 anchors.left: parent.left
                 Layout.fillWidth: true
@@ -181,11 +181,11 @@ ApplicationWindow {
                     visible: false
                     RowLayout {
                         anchors.fill: parent
-                        Text { id: packetLossLabel; font.pointSize: 10}
-                        Text { id: averageLatencyLabel; font.pointSize: 10}
-                        Text { id: minLatencyLabel; font.pointSize: 10 }
-                        Text { id: maxLatencyLabel; font.pointSize: 10 }
-                        Text { id: averageJitterLabel; font.pointSize: 10 }
+                        Text { id: packetLossLabel; font.pixelSize: 12}
+                        Text { id: averageLatencyLabel; font.pixelSize: 12}
+                        Text { id: minLatencyLabel; font.pixelSize: 12 }
+                        Text { id: maxLatencyLabel; font.pixelSize: 12 }
+                        Text { id: averageJitterLabel; font.pixelSize: 12 }
                     }
                 }
             }

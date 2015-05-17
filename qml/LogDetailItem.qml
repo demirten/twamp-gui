@@ -21,7 +21,7 @@ Rectangle {
     Label {
         id: content
         anchors.left: parent.left
-        anchors.leftMargin: 250
+        anchors.leftMargin: 270
         color: "#222"
         font.family: "Courier New"
     }
