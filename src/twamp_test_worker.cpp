@@ -62,7 +62,6 @@ TwampTestWorker::TwampTestWorker(bool lightMode, QHostAddress destinationHost, i
 
 TwampTestWorker::~TwampTestWorker()
 {
-    qDebug() << "test worker DELETE";
     free(message);
     free(reflector);
 }

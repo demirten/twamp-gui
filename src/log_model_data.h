@@ -8,7 +8,6 @@
 #include <QDateTime>
 #include <QHostAddress>
 #include "twamp_common.h"
-#include <QDebug>
 
 class LogModelData : public QObject
 {

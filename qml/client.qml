@@ -35,7 +35,6 @@ ApplicationWindow {
         }
 
         onDisplayError: {
-            console.log(message)
             messageBox.text = message;
             messageBox.open();
         }
