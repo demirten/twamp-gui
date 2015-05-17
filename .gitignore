@@ -1,0 +1,6 @@
+*.o
+*~
+*.user
+deployment.pri
+Makefile
+build

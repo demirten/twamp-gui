@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>client.qml</file>
+        <file>LogDetailItem.qml</file>
+        <file>jbQuick/QChart.js</file>
+        <file>jbQuick/QChart.qml</file>
+        <file>jbQuick/qmldir</file>
+    </qresource>
+</RCC>
