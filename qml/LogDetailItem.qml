@@ -6,7 +6,7 @@ Rectangle {
     id: logDetailItem
     width: parent.width
 
-    height: 20
+    height: 16
     color: "#f5f5f5"
     visible: true
 

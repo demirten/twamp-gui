@@ -216,20 +216,22 @@ ApplicationWindow {
                                 Rectangle {
                                     id: logSummary
                                     width: parent.width
-                                    height: 20
+                                    height: 18
                                     color: (index % 2 == 1) ? "#e7e7fe" : "#faf0d7"
 
-                                    Label {
+                                    Text {
                                         id: timing
                                         text: modelData.timing
                                         color: "black"
+                                        font.pixelSize: 13
                                     }
 
-                                    Label {
+                                    Text {
                                         anchors.left: logSummary.left
                                         anchors.leftMargin: 80
 
                                         color: "black"
+                                        font.pixelSize: 13
                                         text: modelData.summary
                                     }
 
