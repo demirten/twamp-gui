@@ -1,13 +1,6 @@
-TEMPLATE = app
+TEMPLATE = subdirs
 
-QT += qml quick widgets
+SUBDIRS = common client
 
-OBJECTS_DIR = build/obj
-MOC_DIR = build/moc
+client.depends = common
 
-include(src/src.pri)
-
-RESOURCES += qml/qml.qrc
-
-# Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH =
