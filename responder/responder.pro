@@ -4,12 +4,14 @@ TARGET = twamp-responder
 
 SOURCES += \
     main.cpp \
-    twamp_responder.cpp
+    twamp_responder.cpp \
+    twamp_responder_worker.cpp
 
 RESOURCES += qml/qml.qrc
 
 HEADERS += \
     twamp_responder.h \
+    twamp_responder_worker.h \
     log_model_data.h
 
 INCLUDEPATH += ../common
