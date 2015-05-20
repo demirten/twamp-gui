@@ -1,6 +1,6 @@
 TEMPLATE = subdirs
 
-SUBDIRS = common client
+SUBDIRS = common client responder
 
 client.depends = common
-
+responder.depends = common

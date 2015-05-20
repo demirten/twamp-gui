@@ -1,18 +1,16 @@
 TEMPLATE = app
 QT += qml quick widgets
-TARGET = twamp-client
+TARGET = twamp-responder
 
 SOURCES += \
     main.cpp \
-    twamp_client.cpp \
-    twamp_test_worker.cpp
+    twamp_responder.cpp
 
 RESOURCES += qml/qml.qrc
 
 HEADERS += \
-    twamp_client.h \
-    log_model_data.h \
-    twamp_test_worker.h
+    twamp_responder.h \
+    log_model_data.h
 
 INCLUDEPATH += ../common
 LIBS += -L../common -lcommon

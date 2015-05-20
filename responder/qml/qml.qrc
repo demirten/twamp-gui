@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>responder.qml</file>
+        <file>LogDetailItem.qml</file>
+    </qresource>
+</RCC>
