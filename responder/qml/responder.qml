@@ -162,12 +162,14 @@ ApplicationWindow {
                                             var detail = modelData.detail
                                             var i;
                                             var heightAdd = 0;
+
                                             for (i = 0; i < detail.length; i += 2) {
                                                 var component = Qt.createComponent("qrc:/LogDetailItem.qml");
                                                 var object = component.createObject(logDetail);
                                                 object.setText(detail[i], detail[i+1])
                                                 heightAdd += object.height
                                             }
+
                                             logDetail.height = heightAdd
                                             logDetail.savedHeight = heightAdd
                                             delegateRect.height += heightAdd

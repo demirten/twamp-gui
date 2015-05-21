@@ -2,6 +2,8 @@ TEMPLATE = app
 QT += qml quick widgets
 TARGET = twamp-responder
 
+QMAKE_LFLAGS += -static-libgcc -static-libstdc++
+
 SOURCES += \
     main.cpp \
     twamp_responder.cpp \

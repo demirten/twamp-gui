@@ -94,7 +94,7 @@ ApplicationWindow {
 
 
             Text { text: "Destination"; horizontalAlignment: Text.AlignRight }
-            TextField { id: destination; text: "kabatas.yh.com.tr"; Layout.fillWidth: true; width: 200}
+            TextField { id: destination; text: "127.0.0.1"; Layout.fillWidth: true; width: 200}
             Text { text: "Port"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
             TextField { id: port; text: "862"; Layout.fillWidth: true }
             Text { text: "Total Packets"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }

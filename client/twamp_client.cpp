@@ -83,7 +83,6 @@ bool TwampClient::stopTest()
     if (running) {
         if (workerThread) {
             workerThread->quit();
-            workerThread->deleteLater();
             workerThread = NULL;
         }
     }

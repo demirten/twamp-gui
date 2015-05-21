@@ -41,7 +41,6 @@ void TwampResponder::stopServer()
 {
     if (workerThread) {
         workerThread->quit();
-        workerThread->deleteLater();
         workerThread = NULL;
     }
 }
