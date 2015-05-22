@@ -35,3 +35,6 @@ Install latest Qt5 development kit and build the project.
 You can download precompiled binaries for several platforms:
 https://github.com/demirten/twamp-gui/releases
 
+## Screenshots
+
+You can look at the screenshots on project page: http://demirten.github.io/twamp-gui/#screenshots
