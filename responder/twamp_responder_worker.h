@@ -32,10 +32,13 @@ public:
     TwampResponderWorker(int, int);
     ~TwampResponderWorker();
 
+    QString startErrors();
+
 private:
     QList<Client> mClients;
     int controlPort;
     int lightPort;
+    QString mStartErrors;
     struct twamp_time instanceStarted;
     bool running;
     QTimer *removeIdleClientsTimer;
@@ -62,6 +65,7 @@ signals:
     void errorMessage(QString message);
     void logModelChanged();
     void responderStarted();
+    void responderStopped();
     void twampLogString(QString message);
     void twampLog(int type, QString message, QByteArray data, int status);
 

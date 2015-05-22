@@ -22,19 +22,26 @@ void TwampResponder::startServer(int controlPort, int lightPort)
     clearLogs();
     logTimer->restart();
 
-    workerThread = new QThread;
     TwampResponderWorker *worker = new TwampResponderWorker(controlPort, lightPort);
 
+    if (worker->startErrors().length() > 0) {
+        displayError(worker->startErrors());
+        worker->deleteLater();
+        return;
+    }
+
+    workerThread = new QThread;
     worker->moveToThread(workerThread);
     connect(workerThread, SIGNAL(started()), worker, SLOT(startServer()));
     connect(worker, SIGNAL(errorMessage(QString)), this, SIGNAL(displayError(QString)));
     connect(worker, SIGNAL(twampLog(int,QString,QByteArray,int)), this,
             SLOT(twampLogReceived(int,QString,QByteArray,int)));
     connect(worker, SIGNAL(twampLogString(QString)), this, SLOT(twampLogReceived(QString)));
+    connect(worker, SIGNAL(responderStarted()), this, SIGNAL(responderStarted()));
+    connect(worker, SIGNAL(responderStopped()), this, SIGNAL(responderStopped()));
     connect(workerThread, SIGNAL(finished()), worker, SLOT(deleteLater()));
     connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
     workerThread->start();
-    qDebug() << "thread started";
 }
 
 void TwampResponder::stopServer()
@@ -43,6 +50,7 @@ void TwampResponder::stopServer()
         workerThread->quit();
         workerThread = NULL;
     }
+    emit responderStopped();
 }
 
 QList<QObject*> TwampResponder::logModel()

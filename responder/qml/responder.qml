@@ -16,12 +16,6 @@ ApplicationWindow {
         target: responder
 
         onResponderStarted: {
-            progress.value = 0;
-            progress.visible = true;
-            sent.visible = true;
-            sentProgressLabel.text = "0 of " + totalPackets;
-            sentProgressLabel.visible = true
-            testResults.visible = false
             btnStart.text = "STOP"
         }
         onResponderStopped: {
@@ -77,10 +71,8 @@ ApplicationWindow {
                     onClicked: {
                         if (text == "START") {
                             responder.startServer(controlPort.value, lightPort.value)
-                            text = "STOP"
                         } else {
                             responder.stopServer()
-                            text = "START"
                         }
                     }
                 }

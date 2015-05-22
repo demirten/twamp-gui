@@ -8,6 +8,7 @@
 TwampResponderWorker::TwampResponderWorker(int controlPort, int lightPort)
 {
     running = false;
+    mStartErrors = "";
 
     this->controlPort = controlPort;
     this->lightPort   = lightPort;
@@ -18,6 +19,24 @@ TwampResponderWorker::TwampResponderWorker(int controlPort, int lightPort)
     removeIdleClientsTimer = new QTimer(this);
     connect(removeIdleClientsTimer, SIGNAL(timeout()), this, SLOT(removeIdleClientsTimerDone()));
     removeIdleClientsTimer->start(10 * 1000);
+
+    /* bind control tcp socket server */
+    controlServer = new QTcpServer(this);
+    if (!controlServer->listen(QHostAddress::Any, controlPort)) {
+        mStartErrors = "Couldn't listen to tcp port: " + QString::number(controlPort);
+        if (controlPort < 1024) {
+            mStartErrors += "\nListening ports below <1024 requires admin privileges";
+        }
+        return;
+    }
+    udpLightServer = new QUdpSocket(this);
+    if (!udpLightServer->bind(QHostAddress::Any, lightPort)) {
+        mStartErrors = "Couldn't listen to udp port: " + QString::number(lightPort);
+        if (lightPort < 1024) {
+            mStartErrors += "\nListening ports below <1024 requires admin privileges";
+        }
+        return;
+    }
 }
 
 TwampResponderWorker::~TwampResponderWorker()
@@ -25,25 +44,18 @@ TwampResponderWorker::~TwampResponderWorker()
     stopServer();
 }
 
+QString TwampResponderWorker::startErrors()
+{
+    return mStartErrors;
+}
+
 void TwampResponderWorker::startServer()
 {
-    stopServer();
-
-    /* bind control tcp socket server */
-    controlServer = new QTcpServer(this);
-    if (!controlServer->listen(QHostAddress::Any, controlPort)) {
-        emit errorMessage("Couldn't listen to tcp port: " + QString::number(controlPort));
-        return;
-    }
-    udpLightServer = new QUdpSocket(this);
-    if (!udpLightServer->bind(QHostAddress::Any, lightPort)) {
-        emit errorMessage("Couldn't listen to udp port: " + QString::number(lightPort));
-        return;
-    }
     instanceStarted = getTwampTime();
     emit twampLogString("Responder started");
     connect(controlServer, SIGNAL(newConnection()), this, SLOT(acceptNewControlClient()));
     connect(udpLightServer, SIGNAL(readyRead()), this, SLOT(twampLightRead()));
+    emit responderStarted();
 }
 
 void TwampResponderWorker::stopServer()
@@ -67,6 +79,7 @@ void TwampResponderWorker::stopServer()
     }
     mClients.clear();
     emit twampLogString("Responder stopped");
+    emit responderStopped();
 }
 
 void TwampResponderWorker::acceptNewControlClient()
