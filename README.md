@@ -24,9 +24,14 @@ $ ./twamp-gui
 
 ## Build on Windows
 
+Install latest Qt5 development kit and build the project.
+
 ## Build on Mac
+
+Install latest Qt5 development kit and build the project.
 
 ## Precompiled Binaries
 
-
+You can download precompiled binaries for several platforms:
+https://github.com/demirten/twamp-gui/releases
 
