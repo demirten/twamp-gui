@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Installer>
     <Name>Twamp Gui</Name>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Title>Twamp Gui Tools Installer</Title>
     <Publisher>Murat Demirten</Publisher>
     <StartMenuDir>Twamp Gui</StartMenuDir>
