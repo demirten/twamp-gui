@@ -6,6 +6,6 @@
     <Publisher>Murat Demirten</Publisher>
     <StartMenuDir>Twamp Gui</StartMenuDir>
     <TargetDir>@HomeDir@/TwampGui</TargetDir>
-    <RunProgram>@TargetDir@/twamp-gui.exe</RunProgram>
+    <RunProgram>@TargetDir@/twamp-client.exe</RunProgram>
     <RunProgramDescription>Run Twamp Client</RunProgramDescription>
 </Installer>

@@ -42,8 +42,11 @@ Component.prototype.createOperations = function()
     component.createOperations();
 
     if (systemInfo.productType === "windows") {
-        component.addOperation("CreateShortcut", "@TargetDir@/twamp-gui.exe", "@StartMenuDir@/TwampClient.lnk",
-            "workingDirectory=@TargetDir@", "iconPath=@TargetDir@/twamp-gui.exe",
+        component.addOperation("CreateShortcut", "@TargetDir@/twamp-client.exe", "@StartMenuDir@/TwampClient.lnk",
+            "workingDirectory=@TargetDir@", "iconPath=@TargetDir@/twamp-client.exe",
+            "iconId=2");
+        component.addOperation("CreateShortcut", "@TargetDir@/twamp-responder.exe", "@StartMenuDir@/TwampResponder.lnk",
+            "workingDirectory=@TargetDir@", "iconPath=@TargetDir@/twamp-responder.exe",
             "iconId=2");
     }
 }
