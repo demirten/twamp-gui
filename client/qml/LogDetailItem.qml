@@ -28,5 +28,8 @@ Rectangle {
     function setText(label, data) {
         message.text = label;
         content.text = data;
+        if (label === "Warning") {
+            message.color = "red";
+        }
     }
 }

@@ -154,6 +154,11 @@ public:
             timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs);
             items.append("Server Start Time");
             items.append(timestamp.toString("dd.MM.yyyy hh:mm:ss.zzz"));
+            if (seconds > ((QDateTime::currentMSecsSinceEpoch() / 1000) + (5 * 365 * 86400))) {
+                /* 5 year threshold enough to check violation */
+                items.append("Warning");
+                items.append("Server not using NTP Timestamps, violetes RFC");
+            }
 
             items.append("MBZ2");
             items.append(TwampCommon::toHex((const char*)server_start->mbz_, sizeof(server_start->mbz_)));
