@@ -254,9 +254,9 @@ ApplicationWindow {
                                     anchors.fill: parent
                                     onClicked: {
                                         if (logDetail.children.length === 0) {
-                                            var detail = modelData.detail
                                             var i;
                                             var heightAdd = 0;
+                                            var detail = modelData.detail()
                                             for (i = 0; i < detail.length; i += 2) {
                                                 var component = Qt.createComponent("qrc:/LogDetailItem.qml");
                                                 var object = component.createObject(logDetail);

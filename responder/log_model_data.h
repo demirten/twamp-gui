@@ -28,7 +28,7 @@ public:
 
     Q_PROPERTY(QString summary READ summary NOTIFY summaryChanged)
     Q_PROPERTY(QString timing READ timing NOTIFY timingChanged)
-    Q_PROPERTY(QStringList detail READ detail NOTIFY detailChanged)
+
     QString summary() {
         QString str = "";
         if (mType == TwampLogString) {
@@ -61,7 +61,7 @@ public:
     QString timing() {
         return QString::number(mTime, 'f', 03);
     }
-    QStringList detail() {
+    Q_INVOKABLE QStringList detail() {
         QStringList items;
         if (mType == TwampLogString) {
             return items;
@@ -331,8 +331,6 @@ private:
 signals:
     void summaryChanged();
     void timingChanged();
-    void detailChanged();
-
 };
 
 #endif // LOG_MODEL_DATA_H
