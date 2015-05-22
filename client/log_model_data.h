@@ -55,6 +55,8 @@ public:
             str += "[CONTROL] Received Start-Sessions-ACK";
         } else if (mStatus == HandshakeStopSession) {
             str += "[CONTROL] Sent Stop-Sessions";
+        } else if (mStatus == HandshakeError) {
+            str += "[CONTROL] Handshake Error: " + mMessage;
         }
         return str;
     }
