@@ -50,6 +50,7 @@ private:
     QList<struct udpTestPacket> packets;
     QUdpSocket *udpSocket;
     QTcpSocket *controlSocket;
+    QByteArray controlSocketBuffer;
 
     /* Timers */
     QTimer *controlHandshakeTimer;

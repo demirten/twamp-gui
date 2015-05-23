@@ -70,6 +70,7 @@ void TwampTestWorker::startControlHandshake()
 {
     status = HandshakeConnecting;
     controlSocket = new QTcpSocket(this);
+    controlSocketBuffer.clear();
     connect(controlSocket, SIGNAL(connected()), this, SLOT(controlSocketConnected()));
     connect(controlSocket, SIGNAL(error(QAbstractSocket::SocketError)),
             this, SLOT(controlSocketError(QAbstractSocket::SocketError)));
@@ -95,22 +96,24 @@ void TwampTestWorker::controlSocketError(QAbstractSocket::SocketError error)
 
 void TwampTestWorker::controlSocketRead()
 {
-    QByteArray response = controlSocket->readAll();
+    controlSocketBuffer.append(controlSocket->readAll());
     if (status == HandshakeServerGreeting) {
-        if (response.length() < (int) sizeof(struct twamp_message_server_greeting)) {
-            emit twampLog(TwampLogPacket, "Received short greeting response", response, HandshakeError);
-            abortControlHandshake();
+        if (controlSocketBuffer.length() < (int) sizeof(struct twamp_message_server_greeting)) {
+            emit twampLog(TwampLogPacket, "Received short Greeting, size: " + QString::number(controlSocketBuffer.length()),
+                          controlSocketBuffer, HandshakeError);
+            return;
         } else {
-            emit twampLog(TwampLogPacket, "", response, HandshakeServerGreeting);
+            emit twampLog(TwampLogPacket, "", controlSocketBuffer, HandshakeServerGreeting);
             sendControlSetupResponse();
         }
     } else if (status == HandshakeSetupResponse) {
-        if (response.length() < (int) sizeof(struct twamp_message_server_start)) {
-            emit twampLog(TwampLogPacket, "Received short server start response", response, HandshakeError);
-            abortControlHandshake();
+        if (controlSocketBuffer.length() < (int) sizeof(struct twamp_message_server_start)) {
+            emit twampLog(TwampLogPacket, "Received short Server-Start, size: " + QString::number(controlSocketBuffer.length()),
+                          controlSocketBuffer, HandshakeError);
+            return;
         } else {
-            emit twampLog(TwampLogPacket, "", response, HandshakeServerStart);
-            struct twamp_message_server_start *start = (struct twamp_message_server_start*)response.constData();
+            emit twampLog(TwampLogPacket, "", controlSocketBuffer, HandshakeServerStart);
+            struct twamp_message_server_start *start = (struct twamp_message_server_start*)controlSocketBuffer.constData();
             if (start->accept == 0) {
                 sendControlRequestSession();
             } else {
@@ -118,12 +121,13 @@ void TwampTestWorker::controlSocketRead()
             }
         }
     } else if (status == HandshakeRequestSession) {
-        if (response.length() < (int)sizeof(struct twamp_message_accept_session)) {
-            emit twampLog(TwampLogPacket, "Received short accept session response", response, HandshakeError);
-            abortControlHandshake();
+        if (controlSocketBuffer.length() < (int)sizeof(struct twamp_message_accept_session)) {
+            emit twampLog(TwampLogPacket, "Received short Accept-Session, size: " + QString::number(controlSocketBuffer.length()),
+                          controlSocketBuffer, HandshakeError);
+            return;
         } else {
-            emit twampLog(TwampLogPacket, "", response, HandshakeAcceptSession);
-            struct twamp_message_accept_session *accept_session = (struct twamp_message_accept_session*)response.constData();
+            emit twampLog(TwampLogPacket, "", controlSocketBuffer, HandshakeAcceptSession);
+            struct twamp_message_accept_session *accept_session = (struct twamp_message_accept_session*)controlSocketBuffer.constData();
             if (accept_session->accept == 0) {
                 receiverUdpPort = qFromBigEndian(accept_session->port);
                 sendControlStartSessions();
@@ -132,14 +136,16 @@ void TwampTestWorker::controlSocketRead()
             }
         }
     } else if (status == HandshakeStartSession) {
-        if (response.length() < (int)sizeof(struct twamp_message_start_ack)) {
-            emit twampLog(TwampLogPacket, "Receiver short response for start sessions ack", response, HandshakeError);
-            abortControlHandshake();
+        if (controlSocketBuffer.length() < (int)sizeof(struct twamp_message_start_ack)) {
+            emit twampLog(TwampLogPacket, "Receiver short Start-Sessions-Ack, size: " + QString::number(controlSocketBuffer.length()),
+                          controlSocketBuffer, HandshakeError);
+            return;
         } else {
-            emit twampLog(TwampLogPacket, "", response, HandshakeStartSessionAck);
+            emit twampLog(TwampLogPacket, "", controlSocketBuffer, HandshakeStartSessionAck);
             udpSendTimer->start(interval);
         }
     }
+    controlSocketBuffer.clear();
 }
 
 void TwampTestWorker::abortControlHandshake(QString message)
