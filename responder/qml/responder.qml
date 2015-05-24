@@ -8,8 +8,6 @@ ApplicationWindow {
     id: window
     visible: true
     property int margin: 10
-    width: mainLayout.width + 2 * margin
-    height: mainLayout.height + 2 * margin
     title: qsTr("Twamp Responder")
 
     Connections {
@@ -35,26 +33,23 @@ ApplicationWindow {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                aboutBox.open()
+                aboutDialog.open()
             }
         }
     }
 
     ColumnLayout {
         id: mainLayout
-        width: 700
-        anchors.margins: 20
-        spacing: 15
+        anchors.margins: window.margin
+        anchors.fill: parent
+        spacing: 0
 
         GridLayout {
             id: optionsGrid
             columns: 4
 
-            anchors.fill: parent
-            anchors.margins: window.margin
             anchors.top: parent.top
             anchors.left: parent.left
-            anchors.right: parent.right
 
             Text { text: "Twamp Control TCP Listen Port: "; horizontalAlignment: Text.AlignRight }
             SpinBox { id: controlPort; minimumValue: 862; maximumValue: 65535; value: 862; }
@@ -62,7 +57,6 @@ ApplicationWindow {
             SpinBox { id: lightPort; minimumValue: 862; maximumValue: 65535; value: 862; }
         }
         GroupBox {
-            anchors.margins: window.margin
             Layout.fillWidth: true
             RowLayout {
                 Button {
@@ -88,17 +82,16 @@ ApplicationWindow {
 
         ColumnLayout {
             Rectangle {
-                height: 500
-                anchors.margins: window.margin
+                implicitHeight: 500
                 anchors.left: parent.left
                 Layout.fillWidth: true
+                Layout.fillHeight: true
                 ScrollView {
                     anchors.fill: parent
 
                     ListView {
                         id: logListView
                         anchors.centerIn: parent
-                        //spacing: parent.height * 0.01
                         model: responder.logModel
                         anchors.fill: parent
 
@@ -112,15 +105,17 @@ ApplicationWindow {
                                 spacing: 0
                                 Rectangle {
                                     id: logSummary
-                                    width: parent.width
-                                    height: 18
+                                    Layout.fillWidth: true
+                                    Layout.preferredHeight: 18
+                                    Layout.maximumHeight: 50
                                     color: (index % 2 == 1) ? "#e7e7fe" : "#faf0d7"
 
                                     Text {
                                         id: timing
                                         text: modelData.timing
                                         color: "black"
-                                        font.pixelSize: 13
+                                        //font.pixelSize: 13
+                                        font: Qt.font({ family: "monospace" })
                                     }
 
                                     Text {
@@ -128,20 +123,20 @@ ApplicationWindow {
                                         anchors.leftMargin: 80
 
                                         color: "black"
-                                        font.pixelSize: 13
+                                        //font.pixelSize: 13
+                                        font: Qt.font({ family: "monospace" })
                                         text: modelData.summary
                                     }
 
                                 }
                                 ColumnLayout {
                                     id: logDetail
-                                    width: parent.width
+                                    Layout.fillWidth: true
                                     spacing: 0
 
                                     anchors {
                                         top: logSummary.bottom;
                                         left: parent.left;
-                                        right: parent.right;
                                     }
 
                                     property int savedHeight: 0
@@ -198,13 +193,12 @@ ApplicationWindow {
         }
     }
     MessageDialog {
-        id: aboutBox;
-        objectName: "msgBox";
+        id: aboutDialog;
         icon: StandardIcon.Information;
 
         title: "About Twamp Gui v1.0.3";
-        text: "Project home page:\nhttps://github.com/demirten/twamp-gui\n\nCopyright © Murat Demirten <mdemirten@yh.com.tr>"
-
+        text: "Project home page:\nhttps://github.com/demirten/twamp-gui"
+        informativeText: "Copyright © Murat Demirten <mdemirten@yh.com.tr>"
         onAccepted: {
             close();
         }

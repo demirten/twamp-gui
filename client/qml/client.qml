@@ -1,5 +1,6 @@
 import QtQuick 2.3
 import QtQuick.Controls 1.2
+import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 import QtQuick.Window 2.1
@@ -9,8 +10,6 @@ ApplicationWindow {
     id: window
     visible: true
     property int margin: 10
-    width: mainLayout.width + 2 * margin
-    height: mainLayout.height + 2 * margin
     title: qsTr("Twamp Client")
 
     Connections {
@@ -73,44 +72,49 @@ ApplicationWindow {
 
     ColumnLayout {
         id: mainLayout
-        width: 700
-        anchors.margins: 20
-        spacing: 15
+        //width: 700
+        anchors.margins: window.margin
+        anchors.fill: parent
+        spacing: 0
 
         //width: Math.max(window.viewport.width, column.implicitWidth + 2 * column.spacing)
         //height: Math.max(window.viewport.height, column.implicitHeight + 2 * column.spacing)
 
         GridLayout {
             id: optionsGrid
-            columns: 6
+            columns: getGridColumns()
 
-            anchors.fill: parent
-            anchors.margins: window.margin
             anchors.top: parent.top
             anchors.left: parent.left
-            anchors.right: parent.right
             //Layout.fillWidth: true
             //Layout.fillHeight: true
 
+            function getGridColumns() {
+                if (Qt.platform.os == "android" || Qt.platform.os == "ios") {
+                    return 2
+                } else {
+                    return (window.width > 1000) ? 6 : 4
+                }
+            }
 
-            Text { text: "Destination"; horizontalAlignment: Text.AlignRight }
-            TextField { id: destination; text: "127.0.0.1"; Layout.fillWidth: true; width: 200}
+            Text { text: "Destination"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
+            TextField { id: destination; text: "127.0.0.1"; Layout.fillWidth: true; }
             Text { text: "Port"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
             TextField { id: port; text: "862"; Layout.fillWidth: true }
             Text { text: "Total Packets"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
-            SpinBox { id: total_packets; minimumValue: 5; maximumValue: 100; value: 20; Layout.fillWidth: true; }
+            CustomSlider { id: total_packets; minimumValue: 5; maximumValue: 100; value: 20; stepSize: 1; Layout.fillWidth: true; }
 
             Text { text: "Interval (ms)"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
-            SpinBox { id: interval; minimumValue: 10; maximumValue: 1000; value: 50; Layout.fillWidth: true; z: 1 }
+            CustomSlider {id: interval; minimumValue: 10; maximumValue: 1000; value: 50; stepSize: 10; Layout.fillWidth: true}
             Text { text: "Payload (byte)"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
-            SpinBox { id: payload; minimumValue: 0; maximumValue: 1472; value: 64; Layout.fillWidth: true; z: 1 }
+            CustomSlider {id: payload; minimumValue: 0; maximumValue: 1472; value: 64; stepSize: 1}
             Text { text: "Light Mode"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
             CheckBox { id: light; checked: false; }
 
         }
-        GroupBox {
-            Layout.fillWidth: true;
-            anchors.margins: window.margin
+        ColumnLayout {
+            id: startGroup
+            anchors.top: optionsGrid.bottom
             anchors.left: parent.left
             RowLayout {
                 anchors.fill: parent
@@ -127,26 +131,32 @@ ApplicationWindow {
                         }
                     }
                 }
-                Text {id: sent; visible: false; text: "Sent: "; width: 50; }
-                Label {id: sentProgressLabel; visible: false; width: 150 }
-                ProgressBar { id: progress; visible: false;}
+                Text {id: sent; visible: false; text: "Sent Progress"; horizontalAlignment: Text.AlignRight;
+                    anchors.right: sentProgressLabel.left; anchors.rightMargin: 10; Layout.fillWidth: true}
+                Label {id: sentProgressLabel; visible: false; anchors.rightMargin: 20; anchors.right: progress.left;
+                    horizontalAlignment: Text.AlignRight; }
+                ProgressBar { id: progress; visible: false; height: 5; Layout.preferredWidth: 200; Layout.fillWidth: true}
             }
 
         }
 
         ColumnLayout {
+            anchors.top: startGroup.bottom
+            anchors.left: parent.left
+            anchors.topMargin: 10
+            spacing: 10
+
             Rectangle {
-                height: 180
-                border.color: "#bbb"
-                border.width: 0
-                anchors.margins: window.margin
                 anchors.left: parent.left
                 Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.preferredHeight: 200
+                Layout.minimumHeight: 200
+                Layout.maximumHeight: 250
 
                 Chart {
                     id: lineChart
                     visible: true
-                    Layout.fillWidth: true
                     anchors.fill: parent
                     anchors.topMargin: 5
                     chartAnimated: false
@@ -168,40 +178,40 @@ ApplicationWindow {
             }
 
             Rectangle {
-                height: 32
-                anchors.margins: window.margin
                 anchors.left: parent.left
                 Layout.fillWidth: true
+                Layout.preferredHeight: packetLossLabel.contentHeight + 10
                 Rectangle {
                     id: testResults
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.margins: 5
                     Layout.fillWidth: true
-                    anchors.margins: window.margin
                     anchors.left: parent.left
                     anchors.fill: parent
                     visible: false
                     RowLayout {
                         anchors.fill: parent
-                        Text { id: packetLossLabel; font.pixelSize: 12}
-                        Text { id: averageLatencyLabel; font.pixelSize: 12}
-                        Text { id: minLatencyLabel; font.pixelSize: 12 }
-                        Text { id: maxLatencyLabel; font.pixelSize: 12 }
-                        Text { id: averageJitterLabel; font.pixelSize: 12 }
+                        Text { id: packetLossLabel; }
+                        Text { id: averageLatencyLabel; }
+                        Text { id: minLatencyLabel;  }
+                        Text { id: maxLatencyLabel;  }
+                        Text { id: averageJitterLabel;  }
                     }
                 }
             }
 
             Rectangle {
-                height: 200
-                anchors.margins: window.margin
                 anchors.left: parent.left
                 Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.preferredHeight: 200
+                Layout.minimumHeight: 200
                 ScrollView {
                     anchors.fill: parent
 
                     ListView {
                         id: logListView
                         anchors.centerIn: parent
-                        //spacing: parent.height * 0.01
                         model: client.logModel
                         anchors.fill: parent
 
@@ -215,15 +225,17 @@ ApplicationWindow {
                                 spacing: 0
                                 Rectangle {
                                     id: logSummary
-                                    width: parent.width
-                                    height: 18
+                                    Layout.fillWidth: true
+                                    Layout.preferredHeight: timing.contentHeight
+                                    Layout.maximumHeight: 50
                                     color: (index % 2 == 1) ? "#e7e7fe" : "#faf0d7"
 
                                     Text {
                                         id: timing
                                         text: modelData.timing
                                         color: "black"
-                                        font.pixelSize: 13
+                                        //font.pixelSize: 13
+                                        font: Qt.font({ family: "monospace" })
                                     }
 
                                     Text {
@@ -231,20 +243,20 @@ ApplicationWindow {
                                         anchors.leftMargin: 80
 
                                         color: "black"
-                                        font.pixelSize: 13
+                                        //font.pixelSize: 13
+                                        font: Qt.font({ family: "monospace" })
                                         text: modelData.summary
                                     }
 
                                 }
                                 ColumnLayout {
                                     id: logDetail
-                                    width: parent.width
+                                    Layout.fillWidth: true
                                     spacing: 0
 
                                     anchors {
                                         top: logSummary.bottom;
                                         left: parent.left;
-                                        right: parent.right;
                                     }
 
                                     property int savedHeight: 0

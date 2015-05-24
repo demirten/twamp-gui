@@ -5,5 +5,8 @@
         <file>jbQuick/QChart.js</file>
         <file>jbQuick/QChart.qml</file>
         <file>jbQuick/qmldir</file>
+        <file>CustomSlider.qml</file>
+        <file>images/slider_handle.png</file>
+        <file>+android/CustomSlider.qml</file>
     </qresource>
 </RCC>
