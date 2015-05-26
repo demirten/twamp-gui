@@ -144,7 +144,7 @@ ApplicationWindow {
             anchors.top: startGroup.bottom
             anchors.left: parent.left
             anchors.topMargin: 10
-            spacing: 10
+            spacing: 30
 
             Rectangle {
                 anchors.left: parent.left
@@ -226,24 +226,23 @@ ApplicationWindow {
                                 Rectangle {
                                     id: logSummary
                                     Layout.fillWidth: true
-                                    Layout.preferredHeight: timing.contentHeight
-                                    Layout.maximumHeight: 50
+                                    height: timing.contentHeight + 2
                                     color: (index % 2 == 1) ? "#e7e7fe" : "#faf0d7"
 
                                     Text {
                                         id: timing
                                         text: modelData.timing
                                         color: "black"
-                                        //font.pixelSize: 13
                                         font: Qt.font({ family: "monospace" })
+                                        anchors.verticalCenter: parent.verticalCenter
                                     }
 
                                     Text {
                                         anchors.left: logSummary.left
                                         anchors.leftMargin: 80
+                                        anchors.verticalCenter: parent.verticalCenter
 
                                         color: "black"
-                                        //font.pixelSize: 13
                                         font: Qt.font({ family: "monospace" })
                                         text: modelData.summary
                                     }
@@ -257,6 +256,8 @@ ApplicationWindow {
                                     anchors {
                                         top: logSummary.bottom;
                                         left: parent.left;
+                                        margins: 0;
+
                                     }
 
                                     property int savedHeight: 0
@@ -277,7 +278,7 @@ ApplicationWindow {
                                             }
                                             logDetail.height = heightAdd
                                             logDetail.savedHeight = heightAdd
-                                            delegateRect.height += heightAdd
+                                            logSummary.height += heightAdd
                                         } else {
                                             if (!logDetail.visible) {
                                                 delegateRect.height += logDetail.savedHeight

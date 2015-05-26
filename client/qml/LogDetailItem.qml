@@ -5,8 +5,8 @@ import QtQuick.Controls 1.2
 Rectangle {
     id: logDetailItem
     Layout.fillWidth: true
-
-    height: message.contentHeight
+    implicitHeight: message.contentHeight + 4
+    //height: message.contentHeight
     color: "#f5f5f5"
     visible: true
 
