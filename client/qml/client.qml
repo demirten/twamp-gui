@@ -144,7 +144,7 @@ ApplicationWindow {
             anchors.top: startGroup.bottom
             anchors.left: parent.left
             anchors.topMargin: 10
-            spacing: 30
+            spacing: 10
 
             Rectangle {
                 anchors.left: parent.left
@@ -226,7 +226,7 @@ ApplicationWindow {
                                 Rectangle {
                                     id: logSummary
                                     Layout.fillWidth: true
-                                    height: timing.contentHeight + 2
+                                    implicitHeight: timing.contentHeight + 2
                                     color: (index % 2 == 1) ? "#e7e7fe" : "#faf0d7"
 
                                     Text {
@@ -247,51 +247,44 @@ ApplicationWindow {
                                         text: modelData.summary
                                     }
 
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        onClicked: {
+                                            if (logDetail.children.length === 0) {
+                                                var i;
+                                                var heightAdd = 0;
+                                                var detail = modelData.detail()
+                                                for (i = 0; i < detail.length; i += 2) {
+                                                    var component = Qt.createComponent("qrc:/LogDetailItem.qml");
+                                                    var object = component.createObject(logDetail);
+                                                    object.setText(detail[i], detail[i+1])
+                                                    heightAdd += object.height
+                                                }
+                                                delegateRect.height += heightAdd
+                                                logDetail.savedHeight = Qt.binding(function() { return heightAdd })
+                                            } else {
+                                                if (!logDetail.visible) {
+                                                    delegateRect.height += logDetail.savedHeight
+                                                    logDetail.visible = true
+                                                } else {
+                                                    delegateRect.height -= logDetail.savedHeight
+                                                    logDetail.visible = false
+                                                }
+                                            }
+                                        }
+                                    }
+
                                 }
                                 ColumnLayout {
                                     id: logDetail
                                     Layout.fillWidth: true
                                     spacing: 0
 
-                                    anchors {
-                                        top: logSummary.bottom;
-                                        left: parent.left;
-                                        margins: 0;
-
-                                    }
-
                                     property int savedHeight: 0
 
                                 }
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onClicked: {
-                                        if (logDetail.children.length === 0) {
-                                            var i;
-                                            var heightAdd = 0;
-                                            var detail = modelData.detail()
-                                            for (i = 0; i < detail.length; i += 2) {
-                                                var component = Qt.createComponent("qrc:/LogDetailItem.qml");
-                                                var object = component.createObject(logDetail);
-                                                object.setText(detail[i], detail[i+1])
-                                                heightAdd += object.height
-                                            }
-                                            logDetail.height = heightAdd
-                                            logDetail.savedHeight = heightAdd
-                                            logSummary.height += heightAdd
-                                        } else {
-                                            if (!logDetail.visible) {
-                                                delegateRect.height += logDetail.savedHeight
-                                                logDetail.visible = true
-                                            } else {
-                                                delegateRect.height -= logDetail.savedHeight
-                                                logDetail.visible = false
-                                            }
-                                        }
-                                    }
-                                }
-
                             }
+
                         }
                     }
                 }
@@ -316,7 +309,7 @@ ApplicationWindow {
         objectName: "msgBox";
         icon: StandardIcon.Information;
 
-        title: "About Twamp Gui v1.0.3";
+        title: "About Twamp Gui v1.0.4";
         text: "Project home page:\nhttps://github.com/demirten/twamp-gui\n\nCopyright © Murat Demirten <mdemirten@yh.com.tr>"
 
         onAccepted: {
