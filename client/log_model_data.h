@@ -38,7 +38,7 @@ public:
             str += "[TEST] Packet Sent :: Sequence " + QString::number(qFromBigEndian(msg->sequence_number));
         } else if (mStatus == TestPacketReceived) {
             struct twamp_message_reflector_unathenticated *msg = (struct twamp_message_reflector_unathenticated *)mData.constData();
-            str += "[TEST] Packet Received :: Sequence " + QString::number(qFromBigEndian(msg->sequence_number));;
+            str += "[TEST] Packet Received :: Sequence " + QString::number(qFromBigEndian(msg->sender_sequence_number));;
         } else if (mStatus == HandshakeServerGreeting) {
             str += "[CONTROL] Received Server-Greeting";
         } else if (mStatus == HandshakeSetupResponse) {
@@ -307,7 +307,7 @@ public:
         case TestPacketReceived:
             msg_reflector_unauthenticated = (struct twamp_message_reflector_unathenticated*)mData.constData();
             items.append("Sender Sequence");
-            items.append(QString::number(qFromBigEndian(msg_reflector_unauthenticated->sequence_number)));
+            items.append(QString::number(qFromBigEndian(msg_reflector_unauthenticated->sender_sequence_number)));
             items.append("Sender TTL");
             items.append(QString::number(msg_reflector_unauthenticated->sender_ttl));
             seconds = qFromBigEndian(msg_reflector_unauthenticated->receive_timestamp.seconds) - TWAMP_BASE_TIME_OFFSET;
@@ -315,6 +315,11 @@ public:
             timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs);
             items.append("Receive Timestamp");
             items.append(timestamp.toString("dd.MM.yyyy hh:mm:ss.zzz"));
+            if (seconds > ((QDateTime::currentMSecsSinceEpoch() / 1000) + (5 * 365 * 86400))) {
+                /* 5 year threshold enough to check violation */
+                items.append("Warning");
+                items.append("Server not using NTP Timestamps, violetes RFC");
+            }
             seconds = qFromBigEndian(msg_reflector_unauthenticated->timestamp.seconds) - TWAMP_BASE_TIME_OFFSET;
             msecs   = qFromBigEndian(msg_reflector_unauthenticated->timestamp.fraction) / TWAMP_FLOAT_DENOM;
             timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs);

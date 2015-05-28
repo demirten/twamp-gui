@@ -31,7 +31,8 @@ Rectangle {
         message.text = label;
         content.text = data;
         if (label === "Warning") {
-            message.color = "red";
+            message.color = "red"
+            message.font.bold = true
         }
     }
 }
