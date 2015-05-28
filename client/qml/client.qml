@@ -309,7 +309,7 @@ ApplicationWindow {
         objectName: "msgBox";
         icon: StandardIcon.Information;
 
-        title: "About Twamp Gui v1.0.4";
+        title: "About Twamp Gui v1.0.5";
         text: "Project home page:\nhttps://github.com/demirten/twamp-gui\n\nCopyright © Murat Demirten <mdemirten@yh.com.tr>"
 
         onAccepted: {
