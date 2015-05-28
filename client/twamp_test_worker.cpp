@@ -284,8 +284,8 @@ void TwampTestWorker::readReflectorMessage()
 
         udpSocket->readDatagram((char*)reflector, reflector_length);
         quint32 index = qFromBigEndian(reflector->sender_sequence_number);
-        if (packets.size() < (int)index) {
-            qDebug() << "invalid sequence no received: " << index;
+        if (packets.size() <= (int)index) {
+            emit twampLogString("Wrong sequence number received: " + QString::number(index));
             return;
         }
         emit twampLog(TwampLogPacket, "", QByteArray((const char*)reflector, reflector_length), TestPacketReceived);
