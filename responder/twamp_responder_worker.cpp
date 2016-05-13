@@ -153,8 +153,8 @@ void TwampResponderWorker::clientRead()
                     emit twampLogString("Number of Packets must be zero in TwampControl");
                     return;
                 }
-                client->testUdpPort = qFromBigEndian(session->receiver_port);
-                sendAcceptSession(client, qFromBigEndian(session->sender_port));
+                client->testUdpPort = qFromBigEndian(session->sender_port);
+                sendAcceptSession(client, qFromBigEndian(session->receiver_port));
             }
             break;
         case TWAMP_CONTROL_PROTOCOL_PACKET_TYPE_START_SESSIONS:
