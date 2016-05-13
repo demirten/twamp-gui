@@ -363,9 +363,11 @@ void TwampResponderWorker::clientTestPacketRead()
     QUdpSocket *socket = (QUdpSocket*) sender();
 
     char buf[1500];
-
+    int payload = 0;
     int rc = socket->readDatagram(buf, sizeof(buf));
-    int payload = rc - (int)sizeof(struct twamp_message_test_unauthenticated);
+    if (rc > (int)sizeof(struct twamp_message_reflector_unathenticated)) {
+        payload = rc - (int)sizeof(struct twamp_message_reflector_unathenticated);
+    }
 
     struct twamp_message_test_unauthenticated *msg = (struct twamp_message_test_unauthenticated*)buf;
 
