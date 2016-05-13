@@ -290,9 +290,21 @@ void TwampTestWorker::readReflectorMessage()
         }
         emit twampLog(TwampLogPacket, "", QByteArray((const char*)reflector, reflector_length), TestPacketReceived);
 
+        struct twamp_message_reflector_unathenticated *response = (struct twamp_message_reflector_unathenticated*) reflector;
+        struct timeval remote_received, remote_send;
+        struct twamp_time tw_received, tw_send;
+        tw_received.seconds     = qFromBigEndian(response->receive_timestamp.seconds);
+        tw_received.fraction    = qFromBigEndian(response->receive_timestamp.fraction);
+        tw_send.seconds         = qFromBigEndian(response->timestamp.seconds);
+        tw_send.fraction        = qFromBigEndian(response->timestamp.fraction);
+        twampTimeToTimeval(&tw_received, &remote_received);
+        twampTimeToTimeval(&tw_send, &remote_send);
+
+        float remoteProcessingDelay = timevalDiff(&remote_received, &remote_send);
+
         struct udpTestPacket *packet = &packets[index];
         packet->received = now;
-        packet->latency = (now - packet->sent) / 1000.0;
+        packet->latency = ((now - packet->sent) / 1000.0) - remoteProcessingDelay;
         packet->valid = true;
         received_packets++;
         emit newTestLatency(index, packet->latency);
