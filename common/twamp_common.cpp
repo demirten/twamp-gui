@@ -9,8 +9,10 @@ TwampCommon::TwampCommon(QObject *parent) :
 struct twamp_time TwampCommon::getTwampTime()
 {
     struct twamp_time t;
-    t.seconds = QDateTime::currentMSecsSinceEpoch() / 1000 + TWAMP_BASE_TIME_OFFSET;
-    t.fraction = (QDateTime::currentMSecsSinceEpoch() % 1000) * TWAMP_FLOAT_DENOM;
+    qint64 currentTime = QDateTime::currentMSecsSinceEpoch();
+    t.seconds = (currentTime / 1000) + TWAMP_BASE_TIME_OFFSET;
+    /* convert milliseconds to microseconds multiplying by 1000 */
+    t.fraction = (currentTime % 1000) * TWAMP_FLOAT_DENOM * 1000;
     return t;
 }
 
