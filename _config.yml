@@ -2,7 +2,7 @@ title: Twamp-gui
 description: Cross platform twamp client and responder with Qt QML backend
 google_analytics: 
 show_downloads: true
-theme: jekyll-theme-minimal
+theme: jekyll-theme-time-machine
 
 gems:
   - jekyll-mentions
