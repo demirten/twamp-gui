@@ -48,3 +48,6 @@ Twamp Gui Tools written by the Murat Demirten (@demirten).
 If you found a bug you can send email to mdemirten@yh.com.tr with tcpdump capture attached or create an issue on https://github.com/demirten/twamp-gui/issues
 
 You can also get professional support from us for your TWAMP test network.
+
+## HTML5 / Websocket Application
+We built a HTML5 & Websocket Twamp client application for testing: https://ping.as/twamp 
