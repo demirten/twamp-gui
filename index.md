@@ -50,5 +50,5 @@ If you found a bug you can send email to mdemirten@yh.com.tr with tcpdump captur
 You can also get professional support from us for your TWAMP test network.
 
 ## HTML5 / Websocket Application
-We built a HTML5 & Websocket Twamp client application for testing: https://ping.as/twamp 
+We built a HTML5 & Websocket Twamp client application for testing: (https://ping.as/twamp) 
 
