@@ -11,7 +11,8 @@ It is tested on Debian Jessie and newer versions. You need to install following 
 ```
 $ sudo apt-get install qt5-default qtdeclarative5-dev qml-module-qtquick-controls \
   qml-module-qtquick-dialogs qml-module-qtquick-layouts qml-module-qtquick-window2 \
-  qml-module-qtquick2 
+  qml-module-qtquick2 \
+  libgl1-mesa-glx libgl1-mesa-dev
 ```
 
 After that you need to follow standard build process of Qt applications:
@@ -19,8 +20,12 @@ After that you need to follow standard build process of Qt applications:
 ```
 $ qmake
 $ make
-$ ./twamp-gui
+$ responder/twamp-responder &
+$ client/twamp-client 
 ```
+
+> Note: Running twamp-responder with the default port (862) requires root access
+or `CAP_NET_BIND_SERVICE` Linux capability (see http://manpages.org/capabilities/7)
 
 ## Build on Windows
 
