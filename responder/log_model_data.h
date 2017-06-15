@@ -153,7 +153,7 @@ public:
 
             seconds = qFromBigEndian(server_start->start_time.seconds) - TWAMP_BASE_TIME_OFFSET;
             msecs   = qFromBigEndian(server_start->start_time.fraction) / TWAMP_FLOAT_DENOM;
-            timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs);
+            timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs / 1000);
             items.append("Server Start Time");
             items.append(timestamp.toString("dd.MM.yyyy hh:mm:ss.zzz"));
 
@@ -206,7 +206,7 @@ public:
 
             seconds = qFromBigEndian(request_session->start_time.seconds) - TWAMP_BASE_TIME_OFFSET;
             msecs   = qFromBigEndian(request_session->start_time.fraction) / TWAMP_FLOAT_DENOM;
-            timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs);
+            timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs / 1000);
             items.append("Start Time");
             items.append(timestamp.toString("dd.MM.yyyy hh:mm:ss.zzz"));
 
@@ -295,7 +295,7 @@ public:
             items.append(QString::number(qFromBigEndian(msg_test_unauthenticated->sequence_number)));
             seconds = qFromBigEndian(msg_test_unauthenticated->timestamp.seconds) - TWAMP_BASE_TIME_OFFSET;
             msecs   = qFromBigEndian(msg_test_unauthenticated->timestamp.fraction) / TWAMP_FLOAT_DENOM;
-            timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs);
+            timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs / 1000);
             items.append("Sent");
             items.append(timestamp.toString("dd.MM.yyyy hh:mm:ss.zzz"));
             break;
@@ -307,12 +307,12 @@ public:
             items.append(QString::number(msg_reflector_unauthenticated->sender_ttl));
             seconds = qFromBigEndian(msg_reflector_unauthenticated->receive_timestamp.seconds) - TWAMP_BASE_TIME_OFFSET;
             msecs   = qFromBigEndian(msg_reflector_unauthenticated->receive_timestamp.fraction) / TWAMP_FLOAT_DENOM;
-            timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs);
+            timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs / 1000);
             items.append("Receive Timestamp");
             items.append(timestamp.toString("dd.MM.yyyy hh:mm:ss.zzz"));
             seconds = qFromBigEndian(msg_reflector_unauthenticated->timestamp.seconds) - TWAMP_BASE_TIME_OFFSET;
             msecs   = qFromBigEndian(msg_reflector_unauthenticated->timestamp.fraction) / TWAMP_FLOAT_DENOM;
-            timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs);
+            timestamp = QDateTime::fromMSecsSinceEpoch(seconds * 1000 + msecs / 1000);
             items.append("Sent Timestamp");
             items.append(timestamp.toString("dd.MM.yyyy hh:mm:ss.zzz"));
             items.append("Reflector Sequence");
