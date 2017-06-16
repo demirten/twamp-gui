@@ -196,7 +196,7 @@ ApplicationWindow {
         id: aboutDialog;
         icon: StandardIcon.Information;
 
-        title: "About Twamp Gui v1.0.5";
+        title: "About Twamp Gui v1.0.6";
         text: "Project home page:\nhttps://github.com/demirten/twamp-gui"
         informativeText: "Copyright © Murat Demirten <mdemirten@yh.com.tr>"
         onAccepted: {
