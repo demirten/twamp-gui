@@ -401,6 +401,7 @@ void TwampTestWorker::controlHandshakeFinished()
 {
     if (controlSocket) {
         if (controlSocket->isOpen()) {
+            controlSocket->flush();
             controlSocket->close();
         }
         controlSocket->deleteLater();
