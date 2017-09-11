@@ -225,6 +225,8 @@ void TwampTestWorker::sendControlStopSessions()
     struct twamp_message_stop_sessions stop_sessions;
     memset(&stop_sessions, 0, sizeof(struct twamp_message_stop_sessions));
     stop_sessions.three = 3;
+    quint32 number_of_sessions = 1;
+    qToBigEndian(number_of_sessions, (uchar *)&stop_sessions.number_of_sessions);
     controlSocket->write((const char*)&stop_sessions, sizeof(stop_sessions));
     status = HandshakeStopSession;
     emit twampLog(TwampLogPacket, "", QByteArray((const char*)&stop_sessions, sizeof(stop_sessions)), HandshakeStopSession);
