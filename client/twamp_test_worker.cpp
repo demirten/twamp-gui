@@ -260,10 +260,7 @@ void TwampTestWorker::udpSendTimerDone()
     qToBigEndian(sequence, (uchar*)&message->sequence_number);
     qToBigEndian(now.seconds, (uchar*)&message->timestamp.seconds);
     qToBigEndian(now.fraction, (uchar*)&message->timestamp.fraction);
-    message->error_estimate.s = 0;
-    message->error_estimate.z = 0;
-    message->error_estimate.scale = 0;
-    message->error_estimate.multiplier = 1;
+    message->error_estimate = TwampCommon::getErrorEstimate();
 
     sequence++;
 

@@ -393,6 +393,8 @@ void TwampResponderWorker::clientTestPacketRead()
     response->sender_sequence_number = msg->sequence_number;
     response->sender_timestamp.seconds = msg->timestamp.seconds;
     response->sender_timestamp.fraction = msg->timestamp.fraction;
+    response->sender_error_estimate = msg->error_estimate;
+    response->error_estimate = TwampCommon::getErrorEstimate();
 
     socket->writeDatagram((const char*)outbuf, sizeof(outbuf), client->controlSocket->peerAddress(), client->testUdpPort);
     emit twampLog(TwampLogPacket, "", QByteArray((const char*)outbuf, sizeof(outbuf)), TestPacketSent);
