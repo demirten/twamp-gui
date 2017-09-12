@@ -1,5 +1,8 @@
 #include "twamp_common.h"
 #include <QDateTime>
+#ifdef Q_OS_LINUX
+#include <sys/timex.h>
+#endif
 
 TwampCommon::TwampCommon(QObject *parent) :
     QObject(parent)
@@ -33,6 +36,37 @@ float TwampCommon::timevalDiff (struct timeval *before, struct timeval *after)
         secs--;
     }
     return (secs * 1000 + (usecs / 1000.0));
+}
+
+struct twamp_message_error_estimate TwampCommon::getErrorEstimate()
+{
+    struct twamp_message_error_estimate estimate;
+    memset(&estimate, 0, sizeof(estimate));
+
+#ifdef Q_OS_LINUX
+    struct timex ntp_conf;
+    memset(&ntp_conf, 0, sizeof(ntp_conf));
+
+    if ((ntp_adjtime(&ntp_conf) != -1) && !(ntp_conf.status & STA_UNSYNC)) {
+        /* NTP sync is active */
+        estimate.s = 1;
+
+        /* Convert error estimate from microseconds
+           to Multiplier*2^(-32)*2^Scale (in seconds) */
+        qint64 error = (ntp_conf.esterror << 32) / 1000000;
+
+        /* Shift error until it fits into 8 bits */
+        while (error >= 0xFF) {
+            estimate.scale++;
+            error >>= 1;
+        }
+
+        /* Add one for rounding error */
+        estimate.multiplier = error + 1;
+    }
+#endif
+
+    return estimate;
 }
 
 QString TwampCommon::toHex(const QByteArray &data)
