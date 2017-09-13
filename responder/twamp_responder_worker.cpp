@@ -391,6 +391,7 @@ void TwampResponderWorker::clientTestPacketRead()
     qToBigEndian(received.seconds, (uchar*)&response->receive_timestamp.seconds);
     qToBigEndian(received.fraction, (uchar*)&response->receive_timestamp.fraction);
     response->sender_sequence_number = msg->sequence_number;
+    response->sender_ttl = 255;
     response->sender_timestamp.seconds = msg->timestamp.seconds;
     response->sender_timestamp.fraction = msg->timestamp.fraction;
     response->sender_error_estimate = msg->error_estimate;
