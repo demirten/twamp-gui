@@ -281,6 +281,9 @@ void TwampResponderWorker::sendAcceptSession(Client *client, quint16 prefferedPo
     memset(&accept, 0, sizeof(accept));
     accept.accept = 0;
     qToBigEndian(socket->localPort(), (uchar*)&accept.port);
+    for (int i = 0; i < 16; i++) {
+        accept.sid.sid[i] = qrand() & 0xFF;
+    }
 
     connect(socket, SIGNAL(readyRead()), this, SLOT(clientTestPacketRead()));
 
