@@ -1,6 +1,6 @@
 #include "twamp_common.h"
 #include <QDateTime>
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
 #include <sys/timex.h>
 #endif
 
@@ -43,7 +43,7 @@ struct twamp_message_error_estimate TwampCommon::getErrorEstimate()
     struct twamp_message_error_estimate estimate;
     memset(&estimate, 0, sizeof(estimate));
 
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
     struct timex ntp_conf;
     memset(&ntp_conf, 0, sizeof(ntp_conf));
 
