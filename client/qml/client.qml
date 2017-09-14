@@ -9,12 +9,15 @@ import "jbQuick"
 ApplicationWindow {
     id: window
     visible: true
+    width: (Qt.platform.os === "ios" && Qt.platform.os === "android") ? Screen.width : (Screen.width / 2)
     property int margin: 10
     title: qsTr("Twamp Client")
 
     Component.onCompleted: {
-        setX(Screen.width / 2 - width / 2);
-        setY(Screen.height / 2 - height / 2);
+        if (Qt.platform.os !== "ios" && Qt.platform.os !== "android") {
+            setX(Screen.width / 2 - width / 2);
+            setY(Screen.height / 2 - height / 2);
+        }
     }
 
     Connections {
@@ -103,7 +106,7 @@ ApplicationWindow {
             }
 
             Text { text: "Destination"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
-            TextField { id: destination; text: "127.0.0.1"; Layout.fillWidth: true; }
+            TextField { id: destination; text: "twamp.ping.as"; Layout.fillWidth: true; }
             Text { text: "Port"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
             TextField { id: port; text: "862"; Layout.fillWidth: true }
             Text { text: "Total Packets"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
