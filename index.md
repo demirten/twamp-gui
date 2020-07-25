@@ -20,7 +20,7 @@ I tried to make twamp gui runs natively on Linux, Windows and MacOSX platforms s
 [v1.0.5](https://github.com/demirten/twamp-gui/releases/download/v1.0.5/twamp-gui_1.0.5-1_amd64.deb)
 
 * Windows Installer:
-[v1.0.5 (win32/64)](https://github.com/demirten/twamp-gui/releases/download/v1.0.5/TwampGuiInstaller-1.0.5.exe)
+[v1.0.7 (win32/64)](https://github.com/demirten/twamp-gui/releases/download/v1.0.7/TwampGuiInstaller-1.0.7.exe)
 
 * MacOSX Installer:
 [v1.0.5](https://github.com/demirten/twamp-gui/releases/download/v1.0.5/Twamp-1.0.5-Installer.dmg)
@@ -48,7 +48,4 @@ Twamp Gui Tools written by the Murat Demirten (@demirten).
 If you found a bug you can send email to mdemirten@yh.com.tr with tcpdump capture attached or create an issue on https://github.com/demirten/twamp-gui/issues
 
 You can also get professional support from us for your TWAMP test network.
-
-## HTML5 / Websocket Application
-We built a HTML5 & Websocket Twamp client application for testing: [https://ping.as/twamp](https://ping.as/twamp) 
 
