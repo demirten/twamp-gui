@@ -10,6 +10,7 @@ ApplicationWindow {
     id: window
     visible: true
     width: (Qt.platform.os === "ios" && Qt.platform.os === "android") ? Screen.width : (Screen.width / 2)
+    height: (Qt.platform.os === "ios" && Qt.platform.os === "android") ? Screen.height : (Screen.height / 2)
     property int margin: 10
     title: qsTr("Twamp Client")
 
@@ -92,8 +93,8 @@ ApplicationWindow {
             id: optionsGrid
             columns: getGridColumns()
 
-            anchors.top: parent.top
-            anchors.left: parent.left
+            //anchors.top: parent.top
+            //anchors.left: parent.left
             //Layout.fillWidth: true
             //Layout.fillHeight: true
 
@@ -106,7 +107,7 @@ ApplicationWindow {
             }
 
             Text { text: "Destination"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
-            TextField { id: destination; text: "twamp.ping.as"; Layout.fillWidth: true; }
+            TextField { id: destination; text: "127.0.0.1"; Layout.fillWidth: true; }
             Text { text: "Port"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
             TextField { id: port; text: "862"; Layout.fillWidth: true }
             Text { text: "Total Packets"; Layout.fillWidth: true; horizontalAlignment: Text.AlignRight }
@@ -122,10 +123,7 @@ ApplicationWindow {
         }
         ColumnLayout {
             id: startGroup
-            anchors.top: optionsGrid.bottom
-            anchors.left: parent.left
             RowLayout {
-                anchors.fill: parent
                 Button {
                     id: btnStart
                     text: "START"
@@ -140,8 +138,8 @@ ApplicationWindow {
                     }
                 }
                 Text {id: sent; visible: false; text: "Sent Progress"; horizontalAlignment: Text.AlignRight;
-                    anchors.right: sentProgressLabel.left; anchors.rightMargin: 10; Layout.fillWidth: true}
-                Label {id: sentProgressLabel; visible: false; anchors.rightMargin: 20; anchors.right: progress.left;
+                    anchors.rightMargin: 10; Layout.fillWidth: true}
+                Label {id: sentProgressLabel; visible: false; anchors.rightMargin: 20;
                     horizontalAlignment: Text.AlignRight; }
                 ProgressBar { id: progress; visible: false; height: 5; Layout.preferredWidth: 200; Layout.fillWidth: true}
             }
@@ -149,13 +147,10 @@ ApplicationWindow {
         }
 
         ColumnLayout {
-            anchors.top: startGroup.bottom
-            anchors.left: parent.left
             anchors.topMargin: 10
             spacing: 10
 
             Rectangle {
-                anchors.left: parent.left
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.preferredHeight: 200
@@ -186,7 +181,6 @@ ApplicationWindow {
             }
 
             Rectangle {
-                anchors.left: parent.left
                 Layout.fillWidth: true
                 Layout.preferredHeight: packetLossLabel.contentHeight + 10
                 Rectangle {
@@ -209,7 +203,6 @@ ApplicationWindow {
             }
 
             Rectangle {
-                anchors.left: parent.left
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.preferredHeight: 200
@@ -241,7 +234,7 @@ ApplicationWindow {
                                         id: timing
                                         text: modelData.timing
                                         color: "black"
-                                        font: Qt.font({ family: "monospace" })
+                                        font: Qt.font({ family: "Segoe UI, monospace" })
                                         anchors.verticalCenter: parent.verticalCenter
                                     }
 
@@ -251,7 +244,7 @@ ApplicationWindow {
                                         anchors.verticalCenter: parent.verticalCenter
 
                                         color: "black"
-                                        font: Qt.font({ family: "monospace" })
+                                        font: Qt.font({ family: "Segoe UI, monospace" })
                                         text: modelData.summary
                                     }
 

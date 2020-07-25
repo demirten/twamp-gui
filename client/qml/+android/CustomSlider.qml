@@ -18,8 +18,7 @@ Item {
 
         Slider {
             id: mSlider
-            anchors.left: parent.left
-            anchors.right: valueContainer.left
+            //anchors.right: valueContainer.left
             anchors.rightMargin: 10
             anchors.verticalCenter: parent.verticalCenter
             Layout.fillWidth: true

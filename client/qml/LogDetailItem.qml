@@ -23,7 +23,6 @@ Rectangle {
         id: content
         anchors.left: parent.left
         anchors.leftMargin: 270
-        //Layout.fillWidth: true
         color: "#222"
         font: Qt.font({ family: "monospace" })
     }

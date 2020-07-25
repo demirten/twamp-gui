@@ -16,14 +16,9 @@ Item {
     property alias stepSize: mSlider.stepSize
 
     RowLayout {
-        anchors.fill: parent
-
         Slider {
             id: mSlider
-            anchors.left: parent.left
-            anchors.right: valueContainer.left
             anchors.rightMargin: 10
-            anchors.verticalCenter: parent.verticalCenter
             Layout.fillWidth: true
             Layout.minimumWidth: 150
 
@@ -53,13 +48,11 @@ Item {
 
         Rectangle {
             id: valueContainer
-            anchors.right: parent.right
             radius: 5
             color: "#eee"
             border.color: Qt.darker(color, 1.1)
             height: valueText.contentHeight + 5
             width: valueText.contentWidth + 10
-            anchors.verticalCenter: parent.verticalCenter
             Text {
                 id: valueText
                 text: mSlider.value

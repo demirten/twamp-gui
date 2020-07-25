@@ -1,6 +1,7 @@
 #include "twamp_responder_worker.h"
 #include <QDateTime>
 #include <QHostInfo>
+#include <QRandomGenerator>
 
 #define MIN_UDP_PORT 8000
 #define MAX_UDP_PORT 65000
@@ -230,8 +231,8 @@ void TwampResponderWorker::sendGreeting(Client *client)
     memcpy(&greeting.challange[8], &random, 8);
     random = QDateTime::currentMSecsSinceEpoch();
     memcpy(&greeting.salt, &random, 8);
-    random1 = qrand();
-    random2 = qrand();
+    random1 = QRandomGenerator::global()->generate();
+    random2 = QRandomGenerator::global()->generate();
     memcpy(&greeting.salt[8], &random1, 4);
     memcpy(&greeting.salt[12], &random2, 4);
 
@@ -282,7 +283,7 @@ void TwampResponderWorker::sendAcceptSession(Client *client, quint16 prefferedPo
     accept.accept = 0;
     qToBigEndian(socket->localPort(), (uchar*)&accept.port);
     for (int i = 0; i < 16; i++) {
-        accept.sid.sid[i] = qrand() & 0xFF;
+        accept.sid.sid[i] = QRandomGenerator::global()->generate() & 0xFF;
     }
 
     connect(socket, SIGNAL(readyRead()), this, SLOT(clientTestPacketRead()));

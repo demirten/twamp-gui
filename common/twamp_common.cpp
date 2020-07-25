@@ -38,18 +38,18 @@ float TwampCommon::timevalDiff (struct timeval *before, struct timeval *after)
     return (secs * 1000 + (usecs / 1000.0));
 }
 
-struct twamp_message_error_estimate TwampCommon::getErrorEstimate()
+quint16 TwampCommon::getErrorEstimate()
 {
-    struct twamp_message_error_estimate estimate;
-    memset(&estimate, 0, sizeof(estimate));
+    quint16 estimate = 0;
 
 #if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
+    struct twamp_message_error_estimate *e = (struct twamp_message_error_estimate*)&estimate;
     struct timex ntp_conf;
     memset(&ntp_conf, 0, sizeof(ntp_conf));
 
     if ((ntp_adjtime(&ntp_conf) != -1) && !(ntp_conf.status & STA_UNSYNC)) {
         /* NTP sync is active */
-        estimate.s = 1;
+        e->s = 1;
 
         /* Convert error estimate from microseconds
            to Multiplier*2^(-32)*2^Scale (in seconds) */
@@ -57,12 +57,12 @@ struct twamp_message_error_estimate TwampCommon::getErrorEstimate()
 
         /* Shift error until it fits into 8 bits */
         while (error >= 0xFF) {
-            estimate.scale++;
+            e->scale++;
             error >>= 1;
         }
 
         /* Add one for rounding error */
-        estimate.multiplier = error + 1;
+        e->multiplier = error + 1;
     }
 #endif
 

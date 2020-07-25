@@ -1,5 +1,6 @@
 #include <QtEndian>
 #include <QtMath>
+#include <QCoreApplication>
 #include "twamp_test_worker.h"
 
 #define MIN_UDP_PORT 40000
@@ -260,7 +261,7 @@ void TwampTestWorker::udpSendTimerDone()
     qToBigEndian(sequence, (uchar*)&message->sequence_number);
     qToBigEndian(now.seconds, (uchar*)&message->timestamp.seconds);
     qToBigEndian(now.fraction, (uchar*)&message->timestamp.fraction);
-    message->error_estimate = TwampCommon::getErrorEstimate();
+    qToBigEndian(TwampCommon::getErrorEstimate(), (uchar*)&message->error_estimate);
 
     sequence++;
 
@@ -274,6 +275,7 @@ void TwampTestWorker::udpSendTimerDone()
         udpSendTimer->stop();
         maxTestWaitTimer->start(3 * 1000);
     }
+    QCoreApplication::processEvents();
 }
 
 void TwampTestWorker::readReflectorMessage()

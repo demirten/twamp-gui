@@ -5,8 +5,8 @@ import QtQuick.Controls 1.2
 Rectangle {
     id: logDetailItem
     Layout.fillWidth: true
-
-    height: 16
+    implicitHeight: message.contentHeight + 4
+    //height: message.contentHeight
     color: "#f5f5f5"
     visible: true
 
@@ -24,7 +24,6 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 270
         color: "#222"
-        //font.family: "Courier New"
         font: Qt.font({ family: "monospace" })
     }
     function setText(label, data) {

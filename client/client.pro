@@ -2,6 +2,8 @@ TEMPLATE = app
 QT += qml quick widgets
 TARGET = twamp-client
 
+CONFIG += qtquickcompiler
+
 SOURCES += \
     main.cpp \
     twamp_client.cpp \
@@ -14,8 +16,14 @@ HEADERS += \
     log_model_data.h \
     twamp_test_worker.h
 
-INCLUDEPATH += ../common
-LIBS += -L../common -lcommon
+INCLUDEPATH += "$$PWD/../common"
+
+CONFIG(debug, debug|release){
+    LIBS += -L"$$PWD/../common/debug" -lcommon
+}
+CONFIG(release, debug|release){
+    LIBS += -L"$$PWD/../common" -lcommon
+}
 
 OBJECTS_DIR = .obj
 MOC_DIR = .moc

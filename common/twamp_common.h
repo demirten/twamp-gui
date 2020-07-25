@@ -191,7 +191,7 @@ public:
     struct twamp_time getTwampTime();
     int twampTimeToTimeval (struct twamp_time *time, struct timeval *result);
     float timevalDiff (struct timeval *before, struct timeval *after);
-    struct twamp_message_error_estimate getErrorEstimate();
+    static quint16 getErrorEstimate();
     static QString toHex(const QByteArray &data);
     static QString toHex(const char *data, unsigned int length);
     static QString acceptString(uint8_t accept);

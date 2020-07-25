@@ -115,7 +115,7 @@ ApplicationWindow {
                                         text: modelData.timing
                                         color: "black"
                                         //font.pixelSize: 13
-                                        font: Qt.font({ family: "monospace" })
+                                        font: Qt.font({ family: "Segoe UI, monospace" })
                                     }
 
                                     Text {
@@ -124,7 +124,7 @@ ApplicationWindow {
 
                                         color: "black"
                                         //font.pixelSize: 13
-                                        font: Qt.font({ family: "monospace" })
+                                        font: Qt.font({ family: "Segoe UI, monospace" })
                                         text: modelData.summary
                                     }
 
