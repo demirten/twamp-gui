@@ -2,8 +2,8 @@
 <Package>
     <DisplayName>Twamp Gui</DisplayName>
     <Description>Twamp Gui Client and Responder</Description>
-    <Version>1.0.1</Version>
-    <ReleaseDate>2015-05-18</ReleaseDate>
+    <Version>1.0.7</Version>
+    <ReleaseDate>2020-07-25</ReleaseDate>
     <Licenses>
         <License name="GPL" file="LICENSE" />
     </Licenses>
