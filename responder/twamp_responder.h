@@ -49,7 +49,7 @@ private slots:
     void twampLogReceived(QString message);
 
 public slots:
-    void startServer(int controlPort, int lightPort);
+    void startServer(int controlPort, int lightPort, bool collectLogs);
     void stopServer();
     void clearLogs();
 

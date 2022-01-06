@@ -17,7 +17,7 @@ TwampResponder::~TwampResponder()
 
 }
 
-void TwampResponder::startServer(int controlPort, int lightPort)
+void TwampResponder::startServer(int controlPort, int lightPort, bool collectLogs)
 {
     clearLogs();
     logTimer->restart();
@@ -34,9 +34,11 @@ void TwampResponder::startServer(int controlPort, int lightPort)
     worker->moveToThread(workerThread);
     connect(workerThread, SIGNAL(started()), worker, SLOT(startServer()));
     connect(worker, SIGNAL(errorMessage(QString)), this, SIGNAL(displayError(QString)));
-    connect(worker, SIGNAL(twampLog(int,QString,QByteArray,int)), this,
+    if (collectLogs) {
+        connect(worker, SIGNAL(twampLog(int,QString,QByteArray,int)), this,
             SLOT(twampLogReceived(int,QString,QByteArray,int)));
-    connect(worker, SIGNAL(twampLogString(QString)), this, SLOT(twampLogReceived(QString)));
+        connect(worker, SIGNAL(twampLogString(QString)), this, SLOT(twampLogReceived(QString)));
+    }
     connect(worker, SIGNAL(responderStarted()), this, SIGNAL(responderStarted()));
     connect(worker, SIGNAL(responderStopped()), this, SIGNAL(responderStopped()));
     connect(workerThread, SIGNAL(finished()), worker, SLOT(deleteLater()));

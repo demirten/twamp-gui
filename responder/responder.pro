@@ -12,6 +12,7 @@ SOURCES += \
     twamp_responder_worker.cpp
 
 RESOURCES += qml/qml.qrc
+RC_ICONS = ../msi/assets/TwampResponder.ico
 
 HEADERS += \
     twamp_responder.h \
