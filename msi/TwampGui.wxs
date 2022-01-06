@@ -1,0 +1,1572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix
+    xmlns="http://schemas.microsoft.com/wix/2006/wi"
+    xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+    <Product Id="*" Codepage="1252" Language="1033" Manufacturer="Twamp.com" Name="Twamp Gui" UpgradeCode="{0187AD57-97FC-4B1E-9C83-C78AF57A4E87}" Version="1.0.8">
+        <Package Id="*" Comments="Twamp Gui" Compressed="yes" InstallScope="perMachine" Description="Twamp Gui" InstallerVersion="400" Languages="1033" Manufacturer="Twamp.com" Platform="x64" />
+        <Condition Message="You need to be an administrator to install this product.">Privileged</Condition>
+        <CustomAction Id="rememberInstallDir" Property="ARPINSTALLLOCATION" Value="[INSTALLLOCATION]" />
+        <CustomAction Id="SetARPINSTALLLOCATION" Property="ARPINSTALLLOCATION" Value="[INSTALLDIR]" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFiles64Folder">
+                <Directory Id="INSTALLDIR" Name="TwampGui">
+                    <Component Id="comp_INSTALLDIR" Guid="{318207E7-542D-424B-8801-DDAEE33AD6B2}" KeyPath="yes" Win64="yes">
+                        <CreateFolder Directory="INSTALLDIR" />
+                        <RemoveFile Id="RemoveFilesFromAppDirectory" Directory="INSTALLDIR" Name="*.*" On="uninstall" />
+                    </Component>
+                    <Component Id="comp_libegl.dll" Guid="{A88712AC-A1B8-4AC6-B63C-BD9F89D34E0A}" Win64="yes">
+                        <File Id="file_libegl.dll" Name="libEGL.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_libgcc_s_seh_1.dll" Guid="{230E7EBF-4684-469E-99D4-B6C06AA6AFF2}" Win64="yes">
+                        <File Id="file_libgcc_s_seh_1.dll" Name="libgcc_s_seh-1.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_libglesv2.dll" Guid="{3DE9270C-0E4B-437A-BA1B-793FBDB8EE4E}" Win64="yes">
+                        <File Id="file_libglesv2.dll" Name="libGLESv2.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_libstdc___6.dll" Guid="{B4A2A5E2-4642-454F-AE22-E1157E6D3363}" Win64="yes">
+                        <File Id="file_libstdc___6.dll" Name="libstdc++-6.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_libwinpthread_1.dll" Guid="{D2C29C11-BB3B-422D-A95E-7F4A36439D4F}" Win64="yes">
+                        <File Id="file_libwinpthread_1.dll" Name="libwinpthread-1.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_qt5core.dll" Guid="{A2A2E086-4B3D-4317-B43B-6CD52B840848}" Win64="yes">
+                        <File Id="file_qt5core.dll" Name="Qt5Core.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_qt5gui.dll" Guid="{F12CDCF8-0880-4505-9FA5-3C8DD4D38710}" Win64="yes">
+                        <File Id="file_qt5gui.dll" Name="Qt5Gui.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_qt5network.dll" Guid="{5B734F42-0420-4E7D-9D6A-E32320BE081A}" Win64="yes">
+                        <File Id="file_qt5network.dll" Name="Qt5Network.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_qt5qml.dll" Guid="{1151E3A4-A136-4D5F-8927-FD270345420C}" Win64="yes">
+                        <File Id="file_qt5qml.dll" Name="Qt5Qml.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_qt5qmlmodels.dll" Guid="{6952C7F3-3659-4C12-89DE-B64DF3111D72}" Win64="yes">
+                        <File Id="file_qt5qmlmodels.dll" Name="Qt5QmlModels.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_qt5qmlworkerscript.dll" Guid="{3CFEF895-8024-4F18-AE6A-65319C8A0B02}" Win64="yes">
+                        <File Id="file_qt5qmlworkerscript.dll" Name="Qt5QmlWorkerScript.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_qt5quick.dll" Guid="{EEF5A02F-139D-4319-AB36-E54A3E9B53ED}" Win64="yes">
+                        <File Id="file_qt5quick.dll" Name="Qt5Quick.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_qt5quickcontrols2.dll" Guid="{064A0EEB-0473-4C2C-93AB-7BBBAA19715A}" Win64="yes">
+                        <File Id="file_qt5quickcontrols2.dll" Name="Qt5QuickControls2.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_qt5quicktemplates2.dll" Guid="{72236049-651D-4575-BD25-32A54181DF62}" Win64="yes">
+                        <File Id="file_qt5quicktemplates2.dll" Name="Qt5QuickTemplates2.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_qt5quicktest.dll" Guid="{660448CB-01C7-425A-9B52-CAAF3C186D4D}" Win64="yes">
+                        <File Id="file_qt5quicktest.dll" Name="Qt5QuickTest.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_qt5websockets.dll" Guid="{574B5194-422F-49AB-959E-5734B8657325}" Win64="yes">
+                        <File Id="file_qt5websockets.dll" Name="Qt5WebSockets.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_qt5widgets.dll" Guid="{D3BAC5C5-39F8-403F-BB8A-D20569D21AA4}" Win64="yes">
+                        <File Id="file_qt5widgets.dll" Name="Qt5Widgets.dll" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_twamp_client.exe" Guid="{E3E9D1BB-26B8-4FD2-874F-C511CC9D79F4}" Win64="yes">
+                        <File Id="file_twamp_client.exe" Name="twamp-client.exe" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Component Id="comp_twamp_responder.exe" Guid="{CD0E9AC4-A81C-4706-9ADD-DEE96E30CB7A}" Win64="yes">
+                        <File Id="file_twamp_responder.exe" Name="twamp-responder.exe" KeyPath="yes" DiskId="1" Source="input\" />
+                    </Component>
+                    <Directory Id="platforms" Name="platforms">
+                        <Component Id="comp_platforms_qwindows.dll" Guid="{C247C057-56E9-46BE-87FF-78D4933258B4}" Win64="yes">
+                            <File Id="file_platforms_qwindows.dll" Name="qwindows.dll" KeyPath="yes" DiskId="1" Source="input\platforms\" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="qtquick" Name="QtQuick">
+                        <Directory Id="qtquick_controls" Name="Controls">
+                            <Component Id="comp_qtquick_controls_applicationwindow.qml" Guid="{356B88BD-1821-4C4D-AC36-9C5710D21550}" Win64="yes">
+                                <File Id="file_qtquick_controls_applicationwindow.qml" Name="ApplicationWindow.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_applicationwindow.qmlc" Guid="{DED680B2-5480-408D-AF04-5968F82B4D0B}" Win64="yes">
+                                <File Id="file_qtquick_controls_applicationwindow.qmlc" Name="ApplicationWindow.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_busyindicator.qml" Guid="{027D2C34-A49F-452D-900D-BBAF380CC7FF}" Win64="yes">
+                                <File Id="file_qtquick_controls_busyindicator.qml" Name="BusyIndicator.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_busyindicator.qmlc" Guid="{12D4D166-CD14-4A94-882C-2AD3D5290A4C}" Win64="yes">
+                                <File Id="file_qtquick_controls_busyindicator.qmlc" Name="BusyIndicator.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_button.qml" Guid="{E32FACB6-57A9-4B59-9914-93FA81EDD134}" Win64="yes">
+                                <File Id="file_qtquick_controls_button.qml" Name="Button.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_button.qmlc" Guid="{F1A4E16A-0C0F-4928-AD89-51580FBB0C32}" Win64="yes">
+                                <File Id="file_qtquick_controls_button.qmlc" Name="Button.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_calendar.qml" Guid="{8CEEFAAB-D614-43B0-BEB0-8D34A53243F5}" Win64="yes">
+                                <File Id="file_qtquick_controls_calendar.qml" Name="Calendar.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_calendar.qmlc" Guid="{E14E56EE-AC6D-4BCF-B5B3-0159A4A1941F}" Win64="yes">
+                                <File Id="file_qtquick_controls_calendar.qmlc" Name="Calendar.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_checkbox.qml" Guid="{E7CD7B1F-859B-45F4-BA36-14F5935D8155}" Win64="yes">
+                                <File Id="file_qtquick_controls_checkbox.qml" Name="CheckBox.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_checkbox.qmlc" Guid="{9CA77B57-4C68-4CCA-8100-ED9E492F2DE1}" Win64="yes">
+                                <File Id="file_qtquick_controls_checkbox.qmlc" Name="CheckBox.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_combobox.qml" Guid="{2CA49F5F-9F20-4EB1-A82A-772AD0CBDA95}" Win64="yes">
+                                <File Id="file_qtquick_controls_combobox.qml" Name="ComboBox.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_combobox.qmlc" Guid="{9462090C-A2E6-497D-8803-34C55A32D699}" Win64="yes">
+                                <File Id="file_qtquick_controls_combobox.qmlc" Name="ComboBox.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_groupbox.qml" Guid="{86A0E970-EED5-4F92-BF42-3225F9C1CACB}" Win64="yes">
+                                <File Id="file_qtquick_controls_groupbox.qml" Name="GroupBox.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_groupbox.qmlc" Guid="{B919E263-ED7E-4547-AC76-D2B0F44A8617}" Win64="yes">
+                                <File Id="file_qtquick_controls_groupbox.qmlc" Name="GroupBox.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_label.qml" Guid="{30DF715B-4F5B-4645-97E6-6FD5AE937C2F}" Win64="yes">
+                                <File Id="file_qtquick_controls_label.qml" Name="Label.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_label.qmlc" Guid="{647F332A-14AD-4E64-BEBF-4290B294A620}" Win64="yes">
+                                <File Id="file_qtquick_controls_label.qmlc" Name="Label.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_menu.qml" Guid="{47CCCEF0-1051-4D88-B964-7B22B5FBABB0}" Win64="yes">
+                                <File Id="file_qtquick_controls_menu.qml" Name="Menu.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_menu.qmlc" Guid="{422A4A13-FE13-478F-9DEF-AB1B9D5D0D35}" Win64="yes">
+                                <File Id="file_qtquick_controls_menu.qmlc" Name="Menu.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_menubar.qml" Guid="{95507DEB-1316-448B-8E69-861D12E11000}" Win64="yes">
+                                <File Id="file_qtquick_controls_menubar.qml" Name="MenuBar.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_menubar.qmlc" Guid="{F5A527FE-BE23-4727-ACC6-5520A195041F}" Win64="yes">
+                                <File Id="file_qtquick_controls_menubar.qmlc" Name="MenuBar.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_plugins.qmltypes" Guid="{41F9C6A7-C85A-4183-8E6A-B807CFFA6C6A}" Win64="yes">
+                                <File Id="file_qtquick_controls_plugins.qmltypes" Name="plugins.qmltypes" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_progressbar.qml" Guid="{DB3522AB-CED4-4E48-9E8D-95EA85BC1627}" Win64="yes">
+                                <File Id="file_qtquick_controls_progressbar.qml" Name="ProgressBar.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_progressbar.qmlc" Guid="{628E76D6-E152-4797-9502-635123D64B75}" Win64="yes">
+                                <File Id="file_qtquick_controls_progressbar.qmlc" Name="ProgressBar.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_qmldir" Guid="{8CCC0D6A-6F2F-4FFC-97FD-61F1A10370A1}" Win64="yes">
+                                <File Id="file_qtquick_controls_qmldir" Name="qmldir" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_qtquickcontrolsplugin.dll" Guid="{B6AB230F-D7D3-47C2-853D-169AAD7B3148}" Win64="yes">
+                                <File Id="file_qtquick_controls_qtquickcontrolsplugin.dll" Name="qtquickcontrolsplugin.dll" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_radiobutton.qml" Guid="{AA19F13B-6BCB-4ABA-A9AD-39EB690EC613}" Win64="yes">
+                                <File Id="file_qtquick_controls_radiobutton.qml" Name="RadioButton.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_radiobutton.qmlc" Guid="{A7360C45-76DD-4237-A5FD-BA6C6FEAD1B9}" Win64="yes">
+                                <File Id="file_qtquick_controls_radiobutton.qmlc" Name="RadioButton.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_scrollview.qml" Guid="{6D41FC4C-FF70-410C-B4A4-9EB7AB17465B}" Win64="yes">
+                                <File Id="file_qtquick_controls_scrollview.qml" Name="ScrollView.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_scrollview.qmlc" Guid="{66DDD2AB-EBA6-4A6D-A52D-1B107EFE06FF}" Win64="yes">
+                                <File Id="file_qtquick_controls_scrollview.qmlc" Name="ScrollView.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_slider.qml" Guid="{2907CA44-2F31-4981-9F6B-7263B7B951FB}" Win64="yes">
+                                <File Id="file_qtquick_controls_slider.qml" Name="Slider.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_slider.qmlc" Guid="{7609B98A-56A2-4D7E-8F36-26F216C719F4}" Win64="yes">
+                                <File Id="file_qtquick_controls_slider.qmlc" Name="Slider.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_spinbox.qml" Guid="{743FF7DF-FFA2-4673-83B7-83A127786901}" Win64="yes">
+                                <File Id="file_qtquick_controls_spinbox.qml" Name="SpinBox.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_spinbox.qmlc" Guid="{09442DB7-4E10-4C72-B99E-7F0BE0040563}" Win64="yes">
+                                <File Id="file_qtquick_controls_spinbox.qmlc" Name="SpinBox.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_splitview.qml" Guid="{EF838AE1-0604-4FAB-BE42-2405CF27217C}" Win64="yes">
+                                <File Id="file_qtquick_controls_splitview.qml" Name="SplitView.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_splitview.qmlc" Guid="{9803831B-F2D7-4105-A042-F5892E0E478B}" Win64="yes">
+                                <File Id="file_qtquick_controls_splitview.qmlc" Name="SplitView.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_stackview.qml" Guid="{F3116E3E-54BB-4AF0-B963-927F6B48E6B5}" Win64="yes">
+                                <File Id="file_qtquick_controls_stackview.qml" Name="StackView.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_stackview.qmlc" Guid="{AB629F3C-A8E5-4E84-B309-83002426575E}" Win64="yes">
+                                <File Id="file_qtquick_controls_stackview.qmlc" Name="StackView.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_stackviewdelegate.qml" Guid="{4C236B64-9409-430B-9107-F7EF3DCDAD90}" Win64="yes">
+                                <File Id="file_qtquick_controls_stackviewdelegate.qml" Name="StackViewDelegate.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_stackviewdelegate.qmlc" Guid="{368B6E9A-E697-4A25-94C6-C0E1B85EA368}" Win64="yes">
+                                <File Id="file_qtquick_controls_stackviewdelegate.qmlc" Name="StackViewDelegate.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_stackviewtransition.qml" Guid="{D8443222-69F0-4E84-B5E1-958F72924928}" Win64="yes">
+                                <File Id="file_qtquick_controls_stackviewtransition.qml" Name="StackViewTransition.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_stackviewtransition.qmlc" Guid="{8699B077-6884-4C77-99F0-D5F790E72183}" Win64="yes">
+                                <File Id="file_qtquick_controls_stackviewtransition.qmlc" Name="StackViewTransition.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_statusbar.qml" Guid="{C72ACE2E-67A5-4A3A-8110-7F42E1E02C45}" Win64="yes">
+                                <File Id="file_qtquick_controls_statusbar.qml" Name="StatusBar.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_statusbar.qmlc" Guid="{33631C2E-D991-4073-A3A9-DAA9F93E37F2}" Win64="yes">
+                                <File Id="file_qtquick_controls_statusbar.qmlc" Name="StatusBar.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_switch.qml" Guid="{B50881E2-A41D-4A05-96A8-FEA0BF5406D4}" Win64="yes">
+                                <File Id="file_qtquick_controls_switch.qml" Name="Switch.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_switch.qmlc" Guid="{C0771A78-AFCF-4E03-96A9-FE530CEE6E08}" Win64="yes">
+                                <File Id="file_qtquick_controls_switch.qmlc" Name="Switch.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_tab.qml" Guid="{8283746E-6E12-4C97-A665-40EEC6F24A88}" Win64="yes">
+                                <File Id="file_qtquick_controls_tab.qml" Name="Tab.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_tab.qmlc" Guid="{00E511F9-C3E5-482A-AB66-9A3A523146B7}" Win64="yes">
+                                <File Id="file_qtquick_controls_tab.qmlc" Name="Tab.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_tableview.qml" Guid="{C59ED5CC-33B6-4137-B51D-B85AEB14558F}" Win64="yes">
+                                <File Id="file_qtquick_controls_tableview.qml" Name="TableView.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_tableview.qmlc" Guid="{21EA69AE-B42E-477B-B599-CBE19B70A1DB}" Win64="yes">
+                                <File Id="file_qtquick_controls_tableview.qmlc" Name="TableView.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_tableviewcolumn.qml" Guid="{5638C624-D893-4C4E-96B6-772C073FF47F}" Win64="yes">
+                                <File Id="file_qtquick_controls_tableviewcolumn.qml" Name="TableViewColumn.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_tableviewcolumn.qmlc" Guid="{D6FF6015-A448-4175-A95E-C719725AE172}" Win64="yes">
+                                <File Id="file_qtquick_controls_tableviewcolumn.qmlc" Name="TableViewColumn.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_tabview.qml" Guid="{25E0079E-61EE-4D43-A3E3-44235254CE4F}" Win64="yes">
+                                <File Id="file_qtquick_controls_tabview.qml" Name="TabView.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_tabview.qmlc" Guid="{6D2B6472-0527-4568-BBD3-0896D50BFD32}" Win64="yes">
+                                <File Id="file_qtquick_controls_tabview.qmlc" Name="TabView.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_textarea.qml" Guid="{D89CA540-2754-4FD1-863D-0D357B190DE5}" Win64="yes">
+                                <File Id="file_qtquick_controls_textarea.qml" Name="TextArea.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_textarea.qmlc" Guid="{B00801B4-D44C-428C-A106-419285E812BB}" Win64="yes">
+                                <File Id="file_qtquick_controls_textarea.qmlc" Name="TextArea.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_textfield.qml" Guid="{8D41DFA8-1995-4275-8827-A7C3AE191D5A}" Win64="yes">
+                                <File Id="file_qtquick_controls_textfield.qml" Name="TextField.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_textfield.qmlc" Guid="{8397CE2D-2937-4161-98D0-9554B2D75172}" Win64="yes">
+                                <File Id="file_qtquick_controls_textfield.qmlc" Name="TextField.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_toolbar.qml" Guid="{336FD40C-7CC3-463F-A261-9455CF005A48}" Win64="yes">
+                                <File Id="file_qtquick_controls_toolbar.qml" Name="ToolBar.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_toolbar.qmlc" Guid="{EF860B7C-6CED-4965-93DF-F8125EB2EF6E}" Win64="yes">
+                                <File Id="file_qtquick_controls_toolbar.qmlc" Name="ToolBar.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_toolbutton.qml" Guid="{944E8BD1-BE19-4B2D-BAFF-73E857624129}" Win64="yes">
+                                <File Id="file_qtquick_controls_toolbutton.qml" Name="ToolButton.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_toolbutton.qmlc" Guid="{8B7F0F23-E6CA-42AC-8809-EE3D59F65D16}" Win64="yes">
+                                <File Id="file_qtquick_controls_toolbutton.qmlc" Name="ToolButton.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_treeview.qml" Guid="{B294B8E8-C56C-4C05-8C99-A0EE1DA87571}" Win64="yes">
+                                <File Id="file_qtquick_controls_treeview.qml" Name="TreeView.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Component Id="comp_qtquick_controls_treeview.qmlc" Guid="{AA1DDDF0-2468-4F14-84E8-AD94516265AF}" Win64="yes">
+                                <File Id="file_qtquick_controls_treeview.qmlc" Name="TreeView.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\" />
+                            </Component>
+                            <Directory Id="qtquick_controls_private" Name="Private">
+                                <Component Id="comp_qtquick_controls_private_abstractcheckable.qml" Guid="{8562FDB5-9E34-4606-BE48-F531190D365D}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_abstractcheckable.qml" Name="AbstractCheckable.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_abstractcheckable.qmlc" Guid="{127CBF26-7E51-4B9A-9923-BFC48DA7CC66}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_abstractcheckable.qmlc" Name="AbstractCheckable.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_basicbutton.qml" Guid="{2345B27E-211F-438D-8543-F172FB9AA5AF}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_basicbutton.qml" Name="BasicButton.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_basicbutton.qmlc" Guid="{AE32FDF1-32D7-4EDF-8370-9F583F557AAC}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_basicbutton.qmlc" Name="BasicButton.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_basictableview.qml" Guid="{4CF7D47B-499F-47E1-90C3-AA59223DADDF}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_basictableview.qml" Name="BasicTableView.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_basictableview.qmlc" Guid="{0D7F7CE4-2D89-4F7D-8CAA-7277747506D2}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_basictableview.qmlc" Name="BasicTableView.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_calendarheadermodel.qml" Guid="{CC87A2FA-7E76-4E78-9F31-F850E1208DCF}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_calendarheadermodel.qml" Name="CalendarHeaderModel.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_calendarheadermodel.qmlc" Guid="{99F1E392-2B34-43EA-BF10-D04360D3F026}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_calendarheadermodel.qmlc" Name="CalendarHeaderModel.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_calendarutils.js" Guid="{6AD92F97-4E12-4505-8E88-295E3922481E}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_calendarutils.js" Name="CalendarUtils.js" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_calendarutils.jsc" Guid="{80E8ACC4-625B-4EC4-B22B-E0D40B491D7C}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_calendarutils.jsc" Name="CalendarUtils.jsc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_columnmenucontent.qml" Guid="{D49ACD71-02A9-45AB-87ED-8722E9A7EA0C}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_columnmenucontent.qml" Name="ColumnMenuContent.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_columnmenucontent.qmlc" Guid="{FFBD51F0-1006-4831-9BE8-1106EC1F4491}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_columnmenucontent.qmlc" Name="ColumnMenuContent.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_contentitem.qml" Guid="{9A30B016-66AC-49D2-AE9C-A1290F7EF7EC}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_contentitem.qml" Name="ContentItem.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_contentitem.qmlc" Guid="{EBA3C155-E784-455F-A8AC-D2E7050A038F}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_contentitem.qmlc" Name="ContentItem.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_control.qml" Guid="{92A7F6BF-F141-422E-9C78-02408E41914F}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_control.qml" Name="Control.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_control.qmlc" Guid="{91CC0A23-5863-4A70-BF26-5D9737D3249F}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_control.qmlc" Name="Control.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_editmenu.qml" Guid="{DFAEB559-31EE-4ADC-8523-F489F22F483A}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_editmenu.qml" Name="EditMenu.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_editmenu.qmlc" Guid="{621E5DCB-1404-48BF-B5C7-56FC15264EF2}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_editmenu.qmlc" Name="EditMenu.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_editmenu_base.qml" Guid="{EF974E64-9CCB-4BF1-82DB-3281CC583366}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_editmenu_base.qml" Name="EditMenu_base.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_editmenu_base.qmlc" Guid="{FFE9FDA6-7DE1-4134-B5DC-AD09F901274D}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_editmenu_base.qmlc" Name="EditMenu_base.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_fastglow.qml" Guid="{DA561234-A84C-4539-90C4-D459BFF87833}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_fastglow.qml" Name="FastGlow.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_fastglow.qmlc" Guid="{DA2D9DF4-4582-438C-9917-9EEE727EC0C7}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_fastglow.qmlc" Name="FastGlow.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_focusframe.qml" Guid="{3BA9E921-689D-4324-8F30-1CD3C49264D4}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_focusframe.qml" Name="FocusFrame.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_focusframe.qmlc" Guid="{1DE1CA4F-CF47-473C-842B-62E5AD067E7E}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_focusframe.qmlc" Name="FocusFrame.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_hoverbutton.qml" Guid="{B0FC65CF-6C5B-4820-8F4E-7E15AB05CA77}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_hoverbutton.qml" Name="HoverButton.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_hoverbutton.qmlc" Guid="{FE24022F-D2EF-48A7-8653-9202C803B406}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_hoverbutton.qmlc" Name="HoverButton.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_menucontentitem.qml" Guid="{8C72E8EF-AC68-49A8-9453-9FF0ADCF7848}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_menucontentitem.qml" Name="MenuContentItem.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_menucontentitem.qmlc" Guid="{06B7036E-AC2C-430B-A083-2008496B4C29}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_menucontentitem.qmlc" Name="MenuContentItem.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_menucontentscroller.qml" Guid="{BFB55654-F095-4BFE-BDF2-E9161C3FAA74}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_menucontentscroller.qml" Name="MenuContentScroller.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_menucontentscroller.qmlc" Guid="{6B17474D-F2A9-4303-984E-BEB724111548}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_menucontentscroller.qmlc" Name="MenuContentScroller.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_menuitemsubcontrols.qml" Guid="{90884E24-C0B0-4809-9FBD-05E9B8F0C921}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_menuitemsubcontrols.qml" Name="MenuItemSubControls.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_menuitemsubcontrols.qmlc" Guid="{1AF4268D-A0AD-450C-86D1-32B1B660E444}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_menuitemsubcontrols.qmlc" Name="MenuItemSubControls.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_modalpopupbehavior.qml" Guid="{1D43400A-FF37-42DF-9D94-632BF4538DFB}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_modalpopupbehavior.qml" Name="ModalPopupBehavior.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_modalpopupbehavior.qmlc" Guid="{FFA5DC36-9DFF-493B-8954-E05E22D759F2}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_modalpopupbehavior.qmlc" Name="ModalPopupBehavior.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_qmldir" Guid="{481D8AB9-056F-4FA0-93D3-AD317051A954}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_qmldir" Name="qmldir" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_scrollbar.qml" Guid="{70B5B960-B507-4E71-AE0F-17C43F1D238B}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_scrollbar.qml" Name="ScrollBar.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_scrollbar.qmlc" Guid="{8980836E-5781-4B01-B5E3-1F176D618722}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_scrollbar.qmlc" Name="ScrollBar.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_scrollviewhelper.qml" Guid="{6CAD9125-7B1C-4174-A858-DEA00FAAC05B}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_scrollviewhelper.qml" Name="ScrollViewHelper.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_scrollviewhelper.qmlc" Guid="{24DA1344-B2AB-4F68-8627-3F816D0A1B3A}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_scrollviewhelper.qmlc" Name="ScrollViewHelper.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_sourceproxy.qml" Guid="{D8AC381D-09E8-4BC8-B732-03DB81592741}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_sourceproxy.qml" Name="SourceProxy.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_sourceproxy.qmlc" Guid="{26CD37A2-186A-476F-A2A0-C3C0A429D151}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_sourceproxy.qmlc" Name="SourceProxy.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_stackview.js" Guid="{39A933FE-12C4-4F7A-89AC-980702911D91}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_stackview.js" Name="StackView.js" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_stackview.jsc" Guid="{794724E6-96A4-4522-B455-0EBF66BDE2C2}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_stackview.jsc" Name="StackView.jsc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_stackviewslidedelegate.qml" Guid="{8EF1D0EC-A3B6-4709-A2CB-E41703B21521}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_stackviewslidedelegate.qml" Name="StackViewSlideDelegate.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_stackviewslidedelegate.qmlc" Guid="{CFEB6C72-C01E-4580-9E2A-2F27BCD4BED2}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_stackviewslidedelegate.qmlc" Name="StackViewSlideDelegate.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_style.js" Guid="{BEE0CCE0-7A70-418D-938F-579129AF4968}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_style.js" Name="style.js" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_style.jsc" Guid="{F08BDC4A-BDF2-4D55-99A7-B919A213DE8B}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_style.jsc" Name="style.jsc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_style.qml" Guid="{D29321FF-AA49-4C30-90AB-49BC3FBDF5F0}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_style.qml" Name="Style.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_style.qmlc" Guid="{3BCF1937-9F22-4499-B982-1C17C8D8E793}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_style.qmlc" Name="Style.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_systempalettesingleton.qml" Guid="{4CA08B62-29EC-403B-9402-45C1662060E5}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_systempalettesingleton.qml" Name="SystemPaletteSingleton.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_systempalettesingleton.qmlc" Guid="{083E1B16-E1C3-4625-BF21-0EF2FD42BE60}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_systempalettesingleton.qmlc" Name="SystemPaletteSingleton.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_tabbar.qml" Guid="{5C62EE87-8322-45C4-B348-E0DCBB36E57C}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_tabbar.qml" Name="TabBar.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_tabbar.qmlc" Guid="{230AEB9A-591B-4591-8C81-48021A986A4B}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_tabbar.qmlc" Name="TabBar.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_tableviewitemdelegateloader.qml" Guid="{5566F31A-F176-4DA7-80A7-C6DD8FAE7F00}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_tableviewitemdelegateloader.qml" Name="TableViewItemDelegateLoader.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_tableviewitemdelegateloader.qmlc" Guid="{C6AA8A2D-0446-43F9-BC55-7E35FDDDC72E}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_tableviewitemdelegateloader.qmlc" Name="TableViewItemDelegateLoader.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_tableviewselection.qml" Guid="{A162C243-F5B4-4347-9295-156EB27FCCE1}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_tableviewselection.qml" Name="TableViewSelection.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_tableviewselection.qmlc" Guid="{52B5C4B3-3A8E-422E-8A87-F6F72A54AA2C}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_tableviewselection.qmlc" Name="TableViewSelection.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_texthandle.qml" Guid="{F3EAA42E-D522-423D-94F5-969EBAB38EAF}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_texthandle.qml" Name="TextHandle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_texthandle.qmlc" Guid="{2E4E3E89-72DA-43F0-92F4-102CE64CC98B}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_texthandle.qmlc" Name="TextHandle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_textinputwithhandles.qml" Guid="{2A46B57C-2B3E-4535-84B8-454B4B783E79}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_textinputwithhandles.qml" Name="TextInputWithHandles.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_textinputwithhandles.qmlc" Guid="{97C351FD-5AF6-441F-A489-4BC23404ED43}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_textinputwithhandles.qmlc" Name="TextInputWithHandles.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_textsingleton.qml" Guid="{1C4C14B2-3765-4F88-8004-CA2447071AC0}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_textsingleton.qml" Name="TextSingleton.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_textsingleton.qmlc" Guid="{5B1947B2-BF62-4D24-B08F-2F659C9A7FE4}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_textsingleton.qmlc" Name="TextSingleton.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_toolmenubutton.qml" Guid="{68304608-99DC-4F3C-B721-993316C4C91A}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_toolmenubutton.qml" Name="ToolMenuButton.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_toolmenubutton.qmlc" Guid="{5A936DD1-B372-457C-91D0-4CE04CF83B45}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_toolmenubutton.qmlc" Name="ToolMenuButton.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_treeviewitemdelegateloader.qml" Guid="{36BBC058-FAC9-481A-9F23-464B3A3F24EA}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_treeviewitemdelegateloader.qml" Name="TreeViewItemDelegateLoader.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_controls_private_treeviewitemdelegateloader.qmlc" Guid="{70197AC1-C7DE-4713-A0E6-79C7111893DB}" Win64="yes">
+                                    <File Id="file_qtquick_controls_private_treeviewitemdelegateloader.qmlc" Name="TreeViewItemDelegateLoader.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Private\" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="qtquick_controls_styles" Name="Styles">
+                                <Component Id="comp_qtquick_controls_styles_qmldir" Guid="{5DFC76F8-2391-4F32-BD87-90D5FE6CE3FE}" Win64="yes">
+                                    <File Id="file_qtquick_controls_styles_qmldir" Name="qmldir" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\" />
+                                </Component>
+                                <Directory Id="qtquick_controls_styles_base" Name="Base">
+                                    <Component Id="comp_qtquick_controls_styles_base_applicationwindowstyle.qml" Guid="{E96F8241-F47E-4838-AF03-C1908982397A}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_applicationwindowstyle.qml" Name="ApplicationWindowStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_applicationwindowstyle.qmlc" Guid="{B22F1829-6E4E-4BC1-BE97-BE5D76FFC61A}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_applicationwindowstyle.qmlc" Name="ApplicationWindowStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_basictableviewstyle.qml" Guid="{9036F668-7E02-40DA-93D6-ED3F608AAB10}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_basictableviewstyle.qml" Name="BasicTableViewStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_basictableviewstyle.qmlc" Guid="{AC430A05-E4D6-495A-92E2-2C8171FCE39A}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_basictableviewstyle.qmlc" Name="BasicTableViewStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_busyindicatorstyle.qml" Guid="{B2CED160-0684-476E-AF81-1A2E2D74F22D}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_busyindicatorstyle.qml" Name="BusyIndicatorStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_busyindicatorstyle.qmlc" Guid="{0F570D65-C64A-4021-A20A-71FB398E319A}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_busyindicatorstyle.qmlc" Name="BusyIndicatorStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_buttonstyle.qml" Guid="{94A21513-CEC8-4669-94C0-C639A004CFD5}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_buttonstyle.qml" Name="ButtonStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_buttonstyle.qmlc" Guid="{27002E3C-57F2-4C59-9E2C-49CEC3CE4E99}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_buttonstyle.qmlc" Name="ButtonStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_calendarstyle.qml" Guid="{0303419B-352A-4015-94BB-3DE19A4CDC11}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_calendarstyle.qml" Name="CalendarStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_calendarstyle.qmlc" Guid="{131DDD26-20C4-4948-A1C0-3523291F6AE3}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_calendarstyle.qmlc" Name="CalendarStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_checkboxstyle.qml" Guid="{A8A64F0C-6B89-450C-8EC9-45B247E3DFDF}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_checkboxstyle.qml" Name="CheckBoxStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_checkboxstyle.qmlc" Guid="{3EE96D6A-49B8-42DE-A6B2-36AF2498EF53}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_checkboxstyle.qmlc" Name="CheckBoxStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_circularbuttonstyle.qml" Guid="{D3A008CF-953F-43A4-8E91-6EC42267CF1C}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_circularbuttonstyle.qml" Name="CircularButtonStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_circularbuttonstyle.qmlc" Guid="{831F903C-0F2F-484C-80D0-5B4AEB1BC1C4}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_circularbuttonstyle.qmlc" Name="CircularButtonStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_circulargaugestyle.qml" Guid="{29872D40-97C5-4167-9715-28F8BC6A08F2}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_circulargaugestyle.qml" Name="CircularGaugeStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_circulargaugestyle.qmlc" Guid="{3DFA78EE-7036-4E80-BFDD-EDE161FA4A26}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_circulargaugestyle.qmlc" Name="CircularGaugeStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_circulartickmarklabelstyle.qml" Guid="{6538003B-8D68-4A84-93F5-95F3D244A1C4}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_circulartickmarklabelstyle.qml" Name="CircularTickmarkLabelStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_circulartickmarklabelstyle.qmlc" Guid="{A297BB29-113A-445A-A8E1-4AE7B234D44D}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_circulartickmarklabelstyle.qmlc" Name="CircularTickmarkLabelStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_comboboxstyle.qml" Guid="{87430AC6-9060-4C0D-B674-C1E4BADFCAE5}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_comboboxstyle.qml" Name="ComboBoxStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_comboboxstyle.qmlc" Guid="{CD4B6930-B251-4462-8839-710AE29C27A0}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_comboboxstyle.qmlc" Name="ComboBoxStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_commonstylehelper.qml" Guid="{D3A33900-A45F-433B-A1D2-70EC4AE24058}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_commonstylehelper.qml" Name="CommonStyleHelper.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_commonstylehelper.qmlc" Guid="{FCAC27C4-5F0C-4753-BABB-C9CC6EFEEDCE}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_commonstylehelper.qmlc" Name="CommonStyleHelper.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_delaybuttonstyle.qml" Guid="{90F5F803-D341-4C37-806E-49B9178580C7}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_delaybuttonstyle.qml" Name="DelayButtonStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_delaybuttonstyle.qmlc" Guid="{146A019E-7812-48FB-A57D-2ADED52763F2}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_delaybuttonstyle.qmlc" Name="DelayButtonStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_dialstyle.qml" Guid="{F9DE2A4D-D425-447D-93B2-B516D313F12A}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_dialstyle.qml" Name="DialStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_dialstyle.qmlc" Guid="{EF3926EE-B839-4745-926D-31A6AD09ABDF}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_dialstyle.qmlc" Name="DialStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_focusframestyle.qml" Guid="{7F890238-283E-49D5-8E02-CFA4C195AC90}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_focusframestyle.qml" Name="FocusFrameStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_focusframestyle.qmlc" Guid="{2029687D-FE61-4D19-8C29-642E10AF8C4D}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_focusframestyle.qmlc" Name="FocusFrameStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_gaugestyle.qml" Guid="{8F192A1C-7150-42F5-9C8D-36239D2B4ED6}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_gaugestyle.qml" Name="GaugeStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_gaugestyle.qmlc" Guid="{4CD65B23-F9DF-415A-8725-C6087049D38D}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_gaugestyle.qmlc" Name="GaugeStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_groupboxstyle.qml" Guid="{CD48343A-E53F-499E-84EA-A3E990C329D0}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_groupboxstyle.qml" Name="GroupBoxStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_groupboxstyle.qmlc" Guid="{D546A822-48EE-4335-A539-25ED80B79BF3}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_groupboxstyle.qmlc" Name="GroupBoxStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_handlestyle.qml" Guid="{B2764C82-863D-44AA-81C1-C59B09E1BA49}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_handlestyle.qml" Name="HandleStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_handlestyle.qmlc" Guid="{6418C52A-ADFE-45C8-A70F-A753E269DF75}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_handlestyle.qmlc" Name="HandleStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_handlestylehelper.qml" Guid="{602F1399-B8D8-4E6A-A4FA-2BAD33904A8E}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_handlestylehelper.qml" Name="HandleStyleHelper.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_handlestylehelper.qmlc" Guid="{111DC27D-3F70-4B17-9326-E56D4FDB715E}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_handlestylehelper.qmlc" Name="HandleStyleHelper.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_menubarstyle.qml" Guid="{805711BB-7DE0-497A-A4F2-FACEB1A8E682}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_menubarstyle.qml" Name="MenuBarStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_menubarstyle.qmlc" Guid="{0630A319-273A-4391-AF54-78C546CB18F0}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_menubarstyle.qmlc" Name="MenuBarStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_menustyle.qml" Guid="{E19B4E0F-5042-4451-8F2C-5589C89E8BA8}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_menustyle.qml" Name="MenuStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_menustyle.qmlc" Guid="{B445E0B3-3EC0-4E09-B13C-EFFF5EA3CE10}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_menustyle.qmlc" Name="MenuStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_piemenustyle.qml" Guid="{556F1D16-8040-44E4-99D5-D0C109073E97}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_piemenustyle.qml" Name="PieMenuStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_piemenustyle.qmlc" Guid="{DFCE52AC-7C56-4E01-84F3-D3838F1C9FE5}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_piemenustyle.qmlc" Name="PieMenuStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_progressbarstyle.qml" Guid="{BB7ACE66-4C96-406D-846C-F37DAF7F6F1B}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_progressbarstyle.qml" Name="ProgressBarStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_progressbarstyle.qmlc" Guid="{661689B9-76A1-40D7-8E84-4479C67F70EC}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_progressbarstyle.qmlc" Name="ProgressBarStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_radiobuttonstyle.qml" Guid="{1163DEAD-783B-43FE-8408-16151D89BCAF}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_radiobuttonstyle.qml" Name="RadioButtonStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_radiobuttonstyle.qmlc" Guid="{A23F572D-9A05-4C23-A1DA-C55D65C22CCC}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_radiobuttonstyle.qmlc" Name="RadioButtonStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_scrollviewstyle.qml" Guid="{E0B6A333-B83A-447E-B80A-0D804AC24146}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_scrollviewstyle.qml" Name="ScrollViewStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_scrollviewstyle.qmlc" Guid="{A6651893-CF8E-411F-9CE0-242B0B3E0E7A}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_scrollviewstyle.qmlc" Name="ScrollViewStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_sliderstyle.qml" Guid="{C7C5BBD5-D6B0-41BF-9028-1D58270A9BF1}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_sliderstyle.qml" Name="SliderStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_sliderstyle.qmlc" Guid="{94E425D8-9287-43E3-ACDD-5C88CD6699C5}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_sliderstyle.qmlc" Name="SliderStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_spinboxstyle.qml" Guid="{553CF047-99BD-46A7-AC0F-C536E836839E}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_spinboxstyle.qml" Name="SpinBoxStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_spinboxstyle.qmlc" Guid="{3D13B667-F80D-4784-A31D-4933BE6E9789}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_spinboxstyle.qmlc" Name="SpinBoxStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_statusbarstyle.qml" Guid="{5801E204-C28A-4ACC-8885-CB01DCA97A88}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_statusbarstyle.qml" Name="StatusBarStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_statusbarstyle.qmlc" Guid="{067A769C-DA6E-4431-A795-AD5F4D251F60}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_statusbarstyle.qmlc" Name="StatusBarStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_statusindicatorstyle.qml" Guid="{4021997F-67BA-4376-B176-237E9CB550EE}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_statusindicatorstyle.qml" Name="StatusIndicatorStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_statusindicatorstyle.qmlc" Guid="{6D82483B-F110-4E5E-8CCC-0E1BD4CA3EE3}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_statusindicatorstyle.qmlc" Name="StatusIndicatorStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_switchstyle.qml" Guid="{E0872C34-E96D-450C-9625-91E391650857}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_switchstyle.qml" Name="SwitchStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_switchstyle.qmlc" Guid="{F6D6FAE6-D9EA-4241-98B7-9F4D79347401}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_switchstyle.qmlc" Name="SwitchStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_tableviewstyle.qml" Guid="{898EB1CE-1307-4E23-9781-79BF41F58292}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_tableviewstyle.qml" Name="TableViewStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_tableviewstyle.qmlc" Guid="{CF520BB2-A540-4D8C-BB4B-3B7760E58D21}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_tableviewstyle.qmlc" Name="TableViewStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_tabviewstyle.qml" Guid="{CC922588-986B-464E-BF50-FE3B2E5CF458}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_tabviewstyle.qml" Name="TabViewStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_tabviewstyle.qmlc" Guid="{1504280C-27D9-4958-B436-8672A3603793}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_tabviewstyle.qmlc" Name="TabViewStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_textareastyle.qml" Guid="{018B085D-108B-4493-9639-8A5A65CF952C}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_textareastyle.qml" Name="TextAreaStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_textareastyle.qmlc" Guid="{9263A946-8195-4343-ADDD-7E6BFC75E792}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_textareastyle.qmlc" Name="TextAreaStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_textfieldstyle.qml" Guid="{447350D7-D4DD-4D1C-8885-D7803EB6CEE6}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_textfieldstyle.qml" Name="TextFieldStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_textfieldstyle.qmlc" Guid="{9680F95F-F6FE-4C52-9C47-59EE666957C8}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_textfieldstyle.qmlc" Name="TextFieldStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_togglebuttonstyle.qml" Guid="{3B8C91AF-11BA-409C-8CCE-6A48639A38F2}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_togglebuttonstyle.qml" Name="ToggleButtonStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_togglebuttonstyle.qmlc" Guid="{1E1041E8-48D7-4B71-9D32-9170CE202913}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_togglebuttonstyle.qmlc" Name="ToggleButtonStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_toolbarstyle.qml" Guid="{DF5566AC-9F72-497C-B2B8-6EB578CC96E4}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_toolbarstyle.qml" Name="ToolBarStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_toolbarstyle.qmlc" Guid="{28C29A71-7258-4603-8C62-649203F97124}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_toolbarstyle.qmlc" Name="ToolBarStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_toolbuttonstyle.qml" Guid="{AAB1229D-AC34-44A1-9749-52E45298CBED}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_toolbuttonstyle.qml" Name="ToolButtonStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_toolbuttonstyle.qmlc" Guid="{96450976-4658-4B2C-8F7C-1FD6FB8720A5}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_toolbuttonstyle.qmlc" Name="ToolButtonStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_treeviewstyle.qml" Guid="{DE0F8D8A-F2C9-4601-8931-2A44E20ECEF6}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_treeviewstyle.qml" Name="TreeViewStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_treeviewstyle.qmlc" Guid="{00B57E01-4688-44E6-BCF9-462D17EF45E4}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_treeviewstyle.qmlc" Name="TreeViewStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_tumblerstyle.qml" Guid="{11A3AC25-4079-481D-83E7-EB998F126DAE}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_tumblerstyle.qml" Name="TumblerStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_base_tumblerstyle.qmlc" Guid="{713A299A-D583-4F03-A4AA-4B832B1F9416}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_base_tumblerstyle.qmlc" Name="TumblerStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\" />
+                                    </Component>
+                                    <Directory Id="qtquick_controls_styles_base_images" Name="images">
+                                        <Component Id="comp_qtquick_controls_styles_base_images_arrow_down.png" Guid="{6F0B793F-BB0A-44F8-A163-2021F0C1EC91}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_arrow_down.png" Name="arrow-down.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_arrow_down_2x.png" Guid="{86012919-9DDB-4240-9487-4AC830EC67CD}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_arrow_down_2x.png" Name="arrow-down@2x.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_arrow_left.png" Guid="{D975899D-23F9-4101-89EE-32B38E4E6A35}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_arrow_left.png" Name="arrow-left.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_arrow_left_2x.png" Guid="{986D9B81-0D4F-419F-8E30-8419E935A0F5}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_arrow_left_2x.png" Name="arrow-left@2x.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_arrow_right.png" Guid="{122B9BCC-F116-40B5-A1DB-9663CB6DCC87}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_arrow_right.png" Name="arrow-right.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_arrow_right_2x.png" Guid="{AD6845D4-DB22-4E50-88EE-707691102B61}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_arrow_right_2x.png" Name="arrow-right@2x.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_arrow_up.png" Guid="{3FCABFEF-36A7-42DB-9D32-C7B19741FC81}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_arrow_up.png" Name="arrow-up.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_arrow_up_2x.png" Guid="{68540AF8-088C-44AC-ADA4-37D74D57B41D}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_arrow_up_2x.png" Name="arrow-up@2x.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_button.png" Guid="{AE3722B8-38B6-44C6-B60A-8210FF6448DF}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_button.png" Name="button.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_button_down.png" Guid="{98B662C1-BF30-4B40-86D0-2E3891363EEB}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_button_down.png" Name="button_down.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_check.png" Guid="{DB00A733-A914-4EB4-BE6D-8B06BA2B9B91}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_check.png" Name="check.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_check_2x.png" Guid="{D228FC53-DF7D-4C7F-B4F7-ABEDDBF3823A}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_check_2x.png" Name="check@2x.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_editbox.png" Guid="{D85892AF-0419-4F7D-BCD3-8A2D5B9AAF50}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_editbox.png" Name="editbox.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_focusframe.png" Guid="{C3011156-2F50-47BC-8198-4ABC2001C129}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_focusframe.png" Name="focusframe.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_groupbox.png" Guid="{419E631A-0CBE-4700-A470-8DFFA5A8FBBE}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_groupbox.png" Name="groupbox.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_header.png" Guid="{22829161-D582-4FBD-8A41-6AD5C7995F1D}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_header.png" Name="header.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_knob.png" Guid="{E9FC936D-F3DF-40C9-A6D4-3C567E626A21}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_knob.png" Name="knob.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_leftanglearrow.png" Guid="{E657C23F-1268-4EE7-A830-9B94927C207B}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_leftanglearrow.png" Name="leftanglearrow.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_needle.png" Guid="{65A6CC0D-3D46-4CB1-BACF-B9EAC27F447E}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_needle.png" Name="needle.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_progress_indeterminate.png" Guid="{EABF7EEF-AEE9-4F3A-B65F-8461FB8919D7}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_progress_indeterminate.png" Name="progress-indeterminate.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_rightanglearrow.png" Guid="{DCCC011A-B26A-458C-96A6-8C8158B754FC}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_rightanglearrow.png" Name="rightanglearrow.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_scrollbar_handle_horizontal.png" Guid="{803E290D-E2AC-4C4F-8CDC-275E2C2EE2BA}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_scrollbar_handle_horizontal.png" Name="scrollbar-handle-horizontal.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_scrollbar_handle_transient.png" Guid="{836FA175-3D67-4BA4-ADC1-B2A272A1301C}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_scrollbar_handle_transient.png" Name="scrollbar-handle-transient.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_scrollbar_handle_vertical.png" Guid="{7EAAAFA4-AD1B-4A4E-A368-53D63AB187EB}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_scrollbar_handle_vertical.png" Name="scrollbar-handle-vertical.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_slider_groove.png" Guid="{093EC2C8-B8EB-476D-B057-387E955D3D5E}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_slider_groove.png" Name="slider-groove.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_slider_handle.png" Guid="{CFB5F1B7-6214-4969-89D5-00AA214653BB}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_slider_handle.png" Name="slider-handle.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_spinner_large.png" Guid="{C2274F9C-CCB6-4367-BEBC-9E40D1629E48}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_spinner_large.png" Name="spinner_large.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_spinner_medium.png" Guid="{A43139AE-39B6-42A6-A6CF-66FB5AB1A4E4}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_spinner_medium.png" Name="spinner_medium.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_spinner_small.png" Guid="{6D9AF355-8668-4323-854A-5620F73D1EC3}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_spinner_small.png" Name="spinner_small.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_tab.png" Guid="{EA844758-07AE-4CE5-8207-3B2873F3D106}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_tab.png" Name="tab.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                        <Component Id="comp_qtquick_controls_styles_base_images_tab_selected.png" Guid="{27A5C74C-FA87-4B6A-AD03-6C31B66ACA32}" Win64="yes">
+                                            <File Id="file_qtquick_controls_styles_base_images_tab_selected.png" Name="tab_selected.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Base\images\" />
+                                        </Component>
+                                    </Directory>
+                                </Directory>
+                                <Directory Id="qtquick_controls_styles_desktop" Name="Desktop">
+                                    <Component Id="comp_qtquick_controls_styles_desktop_applicationwindowstyle.qml" Guid="{572D2092-13C1-49DD-A05C-35BDF08870FE}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_applicationwindowstyle.qml" Name="ApplicationWindowStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_applicationwindowstyle.qmlc" Guid="{43CC2A92-E01B-42F6-A9B3-3B9E65E75C83}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_applicationwindowstyle.qmlc" Name="ApplicationWindowStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_busyindicatorstyle.qml" Guid="{5A7345F5-9ED0-4BF5-B3CF-2134E3FA09D4}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_busyindicatorstyle.qml" Name="BusyIndicatorStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_busyindicatorstyle.qmlc" Guid="{8765D8E9-29F8-4C5A-8702-CEE59350DBD5}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_busyindicatorstyle.qmlc" Name="BusyIndicatorStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_buttonstyle.qml" Guid="{64E6C0EA-889B-4A8A-8289-778836C12DAD}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_buttonstyle.qml" Name="ButtonStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_buttonstyle.qmlc" Guid="{F07E3568-31D8-4D41-942A-D77B787B9371}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_buttonstyle.qmlc" Name="ButtonStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_calendarstyle.qml" Guid="{AFEF991F-2640-4C0B-B4D7-6540DBC363DA}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_calendarstyle.qml" Name="CalendarStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_calendarstyle.qmlc" Guid="{B84986ED-A99F-40AE-BC79-9A74FF1ADE2A}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_calendarstyle.qmlc" Name="CalendarStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_checkboxstyle.qml" Guid="{237BE0C3-64DE-4818-959F-E3B895018283}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_checkboxstyle.qml" Name="CheckBoxStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_checkboxstyle.qmlc" Guid="{5DA79AAF-8EC3-4EB4-BC3D-50DD7FFEBB91}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_checkboxstyle.qmlc" Name="CheckBoxStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_comboboxstyle.qml" Guid="{150D9E2C-603D-4494-8C62-E52487234504}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_comboboxstyle.qml" Name="ComboBoxStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_comboboxstyle.qmlc" Guid="{0A4956FC-741C-415F-849F-E89C643ABC49}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_comboboxstyle.qmlc" Name="ComboBoxStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_focusframestyle.qml" Guid="{3F60607B-A9EB-424F-A1D3-47E46101D503}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_focusframestyle.qml" Name="FocusFrameStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_focusframestyle.qmlc" Guid="{C97FC3DA-C2AB-492F-AA70-7AED081F455A}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_focusframestyle.qmlc" Name="FocusFrameStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_groupboxstyle.qml" Guid="{150E9FB4-4A7B-4CDC-A5EE-95370A3F60B6}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_groupboxstyle.qml" Name="GroupBoxStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_groupboxstyle.qmlc" Guid="{52D2B05E-0490-4B69-A3BA-CA31A102274B}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_groupboxstyle.qmlc" Name="GroupBoxStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_menubarstyle.qml" Guid="{584D96B8-1D34-4928-83F1-031E4778453B}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_menubarstyle.qml" Name="MenuBarStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_menubarstyle.qmlc" Guid="{2B8666AC-7581-41E5-A180-CBB711BFC1E2}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_menubarstyle.qmlc" Name="MenuBarStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_menustyle.qml" Guid="{5D6DC448-AA64-477D-9A6C-E68956FC2F73}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_menustyle.qml" Name="MenuStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_menustyle.qmlc" Guid="{55CC1889-9AB5-445D-9861-3495A7B25528}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_menustyle.qmlc" Name="MenuStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_progressbarstyle.qml" Guid="{125934DC-6A0F-4052-8A09-1D236BDF6AE5}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_progressbarstyle.qml" Name="ProgressBarStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_progressbarstyle.qmlc" Guid="{17C027BD-DBFC-40FD-A376-E342F386CC37}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_progressbarstyle.qmlc" Name="ProgressBarStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_qmldir" Guid="{1F6C1047-B59D-46B1-AF5E-1142F98D720D}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_qmldir" Name="qmldir" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_radiobuttonstyle.qml" Guid="{0EB3CC6A-A520-48A5-9429-64A5AB47A95C}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_radiobuttonstyle.qml" Name="RadioButtonStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_radiobuttonstyle.qmlc" Guid="{C2ADC4AD-A641-4012-94F1-AFA40EF03CF4}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_radiobuttonstyle.qmlc" Name="RadioButtonStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_rowitemsingleton.qml" Guid="{E7F20160-9367-4BF7-A5A9-540AAEEF86B3}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_rowitemsingleton.qml" Name="RowItemSingleton.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_rowitemsingleton.qmlc" Guid="{0E40AC64-0D58-4226-926B-2AB29F64F6EF}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_rowitemsingleton.qmlc" Name="RowItemSingleton.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_scrollviewstyle.qml" Guid="{35B5D69D-6301-49D4-8140-E6472AB0D238}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_scrollviewstyle.qml" Name="ScrollViewStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_scrollviewstyle.qmlc" Guid="{5BEB9D15-CD3B-4C07-A600-B069585BDB15}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_scrollviewstyle.qmlc" Name="ScrollViewStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_sliderstyle.qml" Guid="{B7E866DE-0D72-4F63-901C-4B42D87F7D70}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_sliderstyle.qml" Name="SliderStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_sliderstyle.qmlc" Guid="{12F7ACE7-CCDE-49F1-9806-91840B5D3AD1}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_sliderstyle.qmlc" Name="SliderStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_spinboxstyle.qml" Guid="{A8F4F513-E14A-42CF-B8E0-D851D472C997}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_spinboxstyle.qml" Name="SpinBoxStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_spinboxstyle.qmlc" Guid="{6B5A7C55-38C4-4C1A-BEE7-9A5C3E2103DE}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_spinboxstyle.qmlc" Name="SpinBoxStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_statusbarstyle.qml" Guid="{6B913C99-CBF0-4E5D-BBC2-10F981326993}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_statusbarstyle.qml" Name="StatusBarStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_statusbarstyle.qmlc" Guid="{72E44E9B-E62E-443B-A23B-8C6AF5DC9282}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_statusbarstyle.qmlc" Name="StatusBarStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_switchstyle.qml" Guid="{6263BF34-9539-4CC0-B374-0B3F5125C001}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_switchstyle.qml" Name="SwitchStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_switchstyle.qmlc" Guid="{82B0E018-A80F-4C2A-9355-75C553510FDC}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_switchstyle.qmlc" Name="SwitchStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_tableviewstyle.qml" Guid="{DBEE1565-E5F3-40E2-8D5F-F4FA4F491811}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_tableviewstyle.qml" Name="TableViewStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_tableviewstyle.qmlc" Guid="{789144EB-9843-4A5F-9D27-3B7FB9A306ED}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_tableviewstyle.qmlc" Name="TableViewStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_tabviewstyle.qml" Guid="{1EA6DE78-AEE1-48E1-8966-F0DF390D4AB0}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_tabviewstyle.qml" Name="TabViewStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_tabviewstyle.qmlc" Guid="{E556B02F-8AF4-4A98-B586-2B17114950DA}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_tabviewstyle.qmlc" Name="TabViewStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_textareastyle.qml" Guid="{9FADCB28-8F8C-4146-A4ED-5F4AC84B3C9A}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_textareastyle.qml" Name="TextAreaStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_textareastyle.qmlc" Guid="{F8D55C6F-22BE-43A3-9BE0-C5956139A001}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_textareastyle.qmlc" Name="TextAreaStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_textfieldstyle.qml" Guid="{EB55EB40-A7ED-4F61-8A4B-8294806DCF19}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_textfieldstyle.qml" Name="TextFieldStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_textfieldstyle.qmlc" Guid="{4457F21E-FA36-46D8-AE3A-622DDD40214E}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_textfieldstyle.qmlc" Name="TextFieldStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_toolbarstyle.qml" Guid="{4432BED5-9E23-44C5-A4B3-80800E6FDD09}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_toolbarstyle.qml" Name="ToolBarStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_toolbarstyle.qmlc" Guid="{33F731EF-95EC-4884-A309-8ADBBC53BDCB}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_toolbarstyle.qmlc" Name="ToolBarStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_toolbuttonstyle.qml" Guid="{4D2EB1A6-B1C9-4A23-A215-17261E000494}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_toolbuttonstyle.qml" Name="ToolButtonStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_toolbuttonstyle.qmlc" Guid="{9F5AFECB-6526-4E1C-9492-6809245FCC2B}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_toolbuttonstyle.qmlc" Name="ToolButtonStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_treeviewstyle.qml" Guid="{7F81F114-2476-454A-8927-B5BA3062C49F}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_treeviewstyle.qml" Name="TreeViewStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_desktop_treeviewstyle.qmlc" Guid="{B0CFD53F-FA12-4E60-8AE3-FCAD8AF2B7B2}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_desktop_treeviewstyle.qmlc" Name="TreeViewStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Desktop\" />
+                                    </Component>
+                                </Directory>
+                                <Directory Id="qtquick_controls_styles_flat" Name="Flat">
+                                    <Component Id="comp_qtquick_controls_styles_flat_plugins.qmltypes" Guid="{0433CB98-8B64-4B74-952D-01EB4C0DDDC2}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_flat_plugins.qmltypes" Name="plugins.qmltypes" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Flat\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_flat_qmldir" Guid="{42C3A689-92CE-4A80-B6B8-7621C6978756}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_flat_qmldir" Name="qmldir" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Flat\" />
+                                    </Component>
+                                    <Component Id="comp_qtquick_controls_styles_flat_qtquickextrasflatplugin.dll" Guid="{A33B8DA5-146F-46A8-8D45-DEEB0C315838}" Win64="yes">
+                                        <File Id="file_qtquick_controls_styles_flat_qtquickextrasflatplugin.dll" Name="qtquickextrasflatplugin.dll" KeyPath="yes" DiskId="1" Source="input\QtQuick\Controls\Styles\Flat\" />
+                                    </Component>
+                                </Directory>
+                            </Directory>
+                        </Directory>
+                        <Directory Id="qtquick_dialogs" Name="Dialogs">
+                            <Component Id="comp_qtquick_dialogs_defaultcolordialog.qml" Guid="{98A5DBF5-CD39-4040-8AB4-F936CDDEB521}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_defaultcolordialog.qml" Name="DefaultColorDialog.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_defaultcolordialog.qmlc" Guid="{790A3A93-9E33-4372-8CD5-9CA369E9A85B}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_defaultcolordialog.qmlc" Name="DefaultColorDialog.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_defaultdialogwrapper.qml" Guid="{EEF2290B-9695-48A3-B77F-F7C552960ED3}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_defaultdialogwrapper.qml" Name="DefaultDialogWrapper.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_defaultdialogwrapper.qmlc" Guid="{49C9513E-7A7E-458C-B768-D0C01A416C88}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_defaultdialogwrapper.qmlc" Name="DefaultDialogWrapper.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_defaultfiledialog.qml" Guid="{B2205FF4-F0E9-448A-9F82-0138C2E0D9A7}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_defaultfiledialog.qml" Name="DefaultFileDialog.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_defaultfiledialog.qmlc" Guid="{6E3A1259-5033-41D9-8720-F4076152C8FB}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_defaultfiledialog.qmlc" Name="DefaultFileDialog.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_defaultfontdialog.qml" Guid="{D7642590-CC08-4FAE-B1CA-4C8500548D26}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_defaultfontdialog.qml" Name="DefaultFontDialog.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_defaultfontdialog.qmlc" Guid="{814A810F-7E9F-466D-8356-7633DAD4287E}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_defaultfontdialog.qmlc" Name="DefaultFontDialog.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_defaultmessagedialog.qml" Guid="{626CB6CE-4762-4302-902E-AFF0AD52752F}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_defaultmessagedialog.qml" Name="DefaultMessageDialog.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_defaultmessagedialog.qmlc" Guid="{466213CB-BC6E-42DD-A922-DADC1F46339E}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_defaultmessagedialog.qmlc" Name="DefaultMessageDialog.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_dialogplugin.dll" Guid="{A01ECB96-20F6-42E9-86CC-CCF42AB126C0}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_dialogplugin.dll" Name="dialogplugin.dll" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_plugins.qmltypes" Guid="{9CB28AB5-ED8F-4177-82A6-1BEC76BA22F1}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_plugins.qmltypes" Name="plugins.qmltypes" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_qmldir" Guid="{67E1FB40-F3EF-4731-B8D2-13C1BAB7DE4D}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_qmldir" Name="qmldir" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_widgetcolordialog.qml" Guid="{36DA3EC7-2CDF-4F44-B0D2-9DE195ACCEB7}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_widgetcolordialog.qml" Name="WidgetColorDialog.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_widgetcolordialog.qmlc" Guid="{FFCEA675-50E1-4A3B-A216-27D4ECB65296}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_widgetcolordialog.qmlc" Name="WidgetColorDialog.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_widgetfiledialog.qml" Guid="{E1883C2D-74EA-4E38-88C5-DC4C95F9F22F}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_widgetfiledialog.qml" Name="WidgetFileDialog.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_widgetfiledialog.qmlc" Guid="{097AF4A9-BBC9-4366-96BD-22134C71065E}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_widgetfiledialog.qmlc" Name="WidgetFileDialog.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_widgetfontdialog.qml" Guid="{487815FB-FA64-4032-AB98-1F05245D107C}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_widgetfontdialog.qml" Name="WidgetFontDialog.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_widgetfontdialog.qmlc" Guid="{2B3B7600-2BA6-481D-A662-F3904A66C5F1}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_widgetfontdialog.qmlc" Name="WidgetFontDialog.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_widgetmessagedialog.qml" Guid="{FD4E3458-07E0-4159-8AA8-78D6E02B7B9F}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_widgetmessagedialog.qml" Name="WidgetMessageDialog.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Component Id="comp_qtquick_dialogs_widgetmessagedialog.qmlc" Guid="{67645289-2FF0-456A-86E8-D39532245C38}" Win64="yes">
+                                <File Id="file_qtquick_dialogs_widgetmessagedialog.qmlc" Name="WidgetMessageDialog.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\" />
+                            </Component>
+                            <Directory Id="qtquick_dialogs_images" Name="images">
+                                <Component Id="comp_qtquick_dialogs_images_checkers.png" Guid="{AE5BC6FF-6B85-4E5C-8B24-414A7426507F}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_images_checkers.png" Name="checkers.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\images\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_images_checkmark.png" Guid="{7D327E79-1C29-4B12-9B69-6D01EE0C2BDA}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_images_checkmark.png" Name="checkmark.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\images\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_images_copy.png" Guid="{5B29D86F-E5CB-41F7-82DF-FCE5A342B666}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_images_copy.png" Name="copy.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\images\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_images_critical.png" Guid="{B7964B4D-5F62-402F-B578-ECC0C74D221A}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_images_critical.png" Name="critical.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\images\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_images_crosshairs.png" Guid="{46371812-00CD-400C-B8BA-1D45CE9578CA}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_images_crosshairs.png" Name="crosshairs.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\images\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_images_information.png" Guid="{0D33149B-5B05-4486-840E-E5462EC272BE}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_images_information.png" Name="information.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\images\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_images_question.png" Guid="{D1E29073-E5F1-4F60-A594-1690642AD5C4}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_images_question.png" Name="question.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\images\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_images_slider_handle.png" Guid="{545EF97E-33B0-4129-806F-783621ED9DFA}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_images_slider_handle.png" Name="slider_handle.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\images\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_images_sunken_frame.png" Guid="{9C5A3723-9770-4AC7-A614-CFE20C26E9E9}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_images_sunken_frame.png" Name="sunken_frame.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\images\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_images_warning.png" Guid="{1227A91B-701D-467E-8CBA-832D82704C7D}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_images_warning.png" Name="warning.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\images\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_images_window_border.png" Guid="{E016E1E3-D66E-460A-8137-E95E8699AF37}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_images_window_border.png" Name="window_border.png" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\images\" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="qtquick_dialogs_private" Name="Private">
+                                <Component Id="comp_qtquick_dialogs_private_dialogsprivateplugin.dll" Guid="{86ADBAB7-FF4A-402C-A03A-14CEE8B1E3A1}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_private_dialogsprivateplugin.dll" Name="dialogsprivateplugin.dll" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_private_plugins.qmltypes" Guid="{A53BB3B1-43AD-483B-8533-92735D1E115F}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_private_plugins.qmltypes" Name="plugins.qmltypes" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\Private\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_private_qmldir" Guid="{2295B9E1-D3D6-4708-A5AB-38D552FF833F}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_private_qmldir" Name="qmldir" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\Private\" />
+                                </Component>
+                            </Directory>
+                            <Directory Id="qtquick_dialogs_qml" Name="qml">
+                                <Component Id="comp_qtquick_dialogs_qml_colorslider.qml" Guid="{376E2A83-E924-4EF0-BB8E-23FC5C4FBE38}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_qml_colorslider.qml" Name="ColorSlider.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\qml\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_qml_colorslider.qmlc" Guid="{6C0C2A97-6123-40CD-AA6F-0847332F3C83}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_qml_colorslider.qmlc" Name="ColorSlider.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\qml\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_qml_defaultwindowdecoration.qml" Guid="{EE1AA7BC-9F81-460B-813F-F3686D935719}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_qml_defaultwindowdecoration.qml" Name="DefaultWindowDecoration.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\qml\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_qml_defaultwindowdecoration.qmlc" Guid="{52BA0DA2-9C67-4412-952C-7C58E197A4EF}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_qml_defaultwindowdecoration.qmlc" Name="DefaultWindowDecoration.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\qml\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_qml_iconbuttonstyle.qml" Guid="{9575DB48-BCF7-4998-8A16-5E8118A5858D}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_qml_iconbuttonstyle.qml" Name="IconButtonStyle.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\qml\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_qml_iconbuttonstyle.qmlc" Guid="{ACEEFBF6-226A-4573-8B78-4075684B9360}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_qml_iconbuttonstyle.qmlc" Name="IconButtonStyle.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\qml\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_qml_iconglyph.qml" Guid="{853994AD-F0BD-4A11-BB46-C2E8C2042BE5}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_qml_iconglyph.qml" Name="IconGlyph.qml" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\qml\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_qml_iconglyph.qmlc" Guid="{BB250EA5-236C-4A83-AA49-00EBA7B68E35}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_qml_iconglyph.qmlc" Name="IconGlyph.qmlc" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\qml\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_qml_icons.ttf" Guid="{A4812B3A-C47C-4CBE-8C39-7A87C363EA6C}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_qml_icons.ttf" Name="icons.ttf" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\qml\" />
+                                </Component>
+                                <Component Id="comp_qtquick_dialogs_qml_qmldir" Guid="{55EF5482-2DD3-4419-A49F-69B09C3E3E63}" Win64="yes">
+                                    <File Id="file_qtquick_dialogs_qml_qmldir" Name="qmldir" KeyPath="yes" DiskId="1" Source="input\QtQuick\Dialogs\qml\" />
+                                </Component>
+                            </Directory>
+                        </Directory>
+                        <Directory Id="qtquick_layouts" Name="Layouts">
+                            <Component Id="comp_qtquick_layouts_plugins.qmltypes" Guid="{4D62DB5C-8A68-4448-8E7A-7D3E08E4779E}" Win64="yes">
+                                <File Id="file_qtquick_layouts_plugins.qmltypes" Name="plugins.qmltypes" KeyPath="yes" DiskId="1" Source="input\QtQuick\Layouts\" />
+                            </Component>
+                            <Component Id="comp_qtquick_layouts_qmldir" Guid="{2427F3B7-892A-4486-AB03-4B393DC9BEBD}" Win64="yes">
+                                <File Id="file_qtquick_layouts_qmldir" Name="qmldir" KeyPath="yes" DiskId="1" Source="input\QtQuick\Layouts\" />
+                            </Component>
+                            <Component Id="comp_qtquick_layouts_qquicklayoutsplugin.dll" Guid="{19032C37-5189-4EAD-893A-AD06067B717A}" Win64="yes">
+                                <File Id="file_qtquick_layouts_qquicklayoutsplugin.dll" Name="qquicklayoutsplugin.dll" KeyPath="yes" DiskId="1" Source="input\QtQuick\Layouts\" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="qtquick_privatewidgets" Name="PrivateWidgets">
+                            <Component Id="comp_qtquick_privatewidgets_plugins.qmltypes" Guid="{7758A0FC-6D76-4C48-8D01-60D298B06AF4}" Win64="yes">
+                                <File Id="file_qtquick_privatewidgets_plugins.qmltypes" Name="plugins.qmltypes" KeyPath="yes" DiskId="1" Source="input\QtQuick\PrivateWidgets\" />
+                            </Component>
+                            <Component Id="comp_qtquick_privatewidgets_qmldir" Guid="{037702FD-940C-4908-960F-DC91C60A0EDA}" Win64="yes">
+                                <File Id="file_qtquick_privatewidgets_qmldir" Name="qmldir" KeyPath="yes" DiskId="1" Source="input\QtQuick\PrivateWidgets\" />
+                            </Component>
+                            <Component Id="comp_qtquick_privatewidgets_widgetsplugin.dll" Guid="{2976CFCE-6DFC-4239-A773-87023B76C19F}" Win64="yes">
+                                <File Id="file_qtquick_privatewidgets_widgetsplugin.dll" Name="widgetsplugin.dll" KeyPath="yes" DiskId="1" Source="input\QtQuick\PrivateWidgets\" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="qtquick_window.2" Name="Window.2">
+                            <Component Id="comp_qtquick_window.2_plugins.qmltypes" Guid="{3B08A258-BA1C-4665-8D07-E24A633BAE0B}" Win64="yes">
+                                <File Id="file_qtquick_window.2_plugins.qmltypes" Name="plugins.qmltypes" KeyPath="yes" DiskId="1" Source="input\QtQuick\Window.2\" />
+                            </Component>
+                            <Component Id="comp_qtquick_window.2_qmldir" Guid="{9F92608C-5FAB-4D4E-B148-24E0A1F344C4}" Win64="yes">
+                                <File Id="file_qtquick_window.2_qmldir" Name="qmldir" KeyPath="yes" DiskId="1" Source="input\QtQuick\Window.2\" />
+                            </Component>
+                            <Component Id="comp_qtquick_window.2_windowplugin.dll" Guid="{6F92AC7E-979C-4CB2-A394-A858EA4B80FF}" Win64="yes">
+                                <File Id="file_qtquick_window.2_windowplugin.dll" Name="windowplugin.dll" KeyPath="yes" DiskId="1" Source="input\QtQuick\Window.2\" />
+                            </Component>
+                        </Directory>
+                    </Directory>
+                    <Directory Id="qtquick.2" Name="QtQuick.2">
+                        <Component Id="comp_qtquick.2_plugins.qmltypes" Guid="{9FF3539F-B318-4E7D-9965-DA0BF035EAA8}" Win64="yes">
+                            <File Id="file_qtquick.2_plugins.qmltypes" Name="plugins.qmltypes" KeyPath="yes" DiskId="1" Source="input\QtQuick.2\" />
+                        </Component>
+                        <Component Id="comp_qtquick.2_qmldir" Guid="{DE7CA900-248D-49E9-9863-1D602A6B1694}" Win64="yes">
+                            <File Id="file_qtquick.2_qmldir" Name="qmldir" KeyPath="yes" DiskId="1" Source="input\QtQuick.2\" />
+                        </Component>
+                        <Component Id="comp_qtquick.2_qtquick2plugin.dll" Guid="{6EC7EA36-8FDE-4080-BD35-0F2D84D1A3F4}" Win64="yes">
+                            <File Id="file_qtquick.2_qtquick2plugin.dll" Name="qtquick2plugin.dll" KeyPath="yes" DiskId="1" Source="input\QtQuick.2\" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="styles" Name="styles">
+                        <Component Id="comp_styles_qwindowsvistastyle.dll" Guid="{8D82854F-B7F8-4F44-822B-BD26F53B8805}" Win64="yes">
+                            <File Id="file_styles_qwindowsvistastyle.dll" Name="qwindowsvistastyle.dll" KeyPath="yes" DiskId="1" Source="input\styles\" />
+                        </Component>
+                    </Directory>
+                </Directory>
+                <Directory Id="ProgramMenuFolder">
+                    <Directory Id="TwampGuiStartMenuFolder" Name="Twamp Gui">
+                        <Component Id="comp_twamp_gui_shortcuts" Guid="{332981E4-4C4C-4A1D-A838-24971704DF46}" Win64="yes">
+                            <Shortcut Id="TwampGuiClientShortcut" Name="Twamp Client" Description="Runs the twamp test client application"
+                                Directory="TwampGuiStartMenuFolder" Target="[#file_twamp_client.exe]">
+                                <Icon Id="TwampClientIcon" SourceFile="assets\TwampClient.ico" />
+                            </Shortcut>
+                            <Shortcut Id="TwampGuiResponderShortcut" Name="Twamp Responder" Description="Runs the twamp responder application"
+                                Directory="TwampGuiStartMenuFolder" Target="[#file_twamp_responder.exe]">
+                                <Icon Id="TwampResponderIcon" SourceFile="assets\TwampResponder.ico" />
+                            </Shortcut>
+                            <RemoveFolder Id="RemoveTwampGuiStartMenuFolder" Directory="TwampGuiStartMenuFolder" On="uninstall" />
+                            <RegistryValue Root="HKCU" Key="Software\TwampGui" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+                        </Component>
+                    </Directory>
+                </Directory>
+            </Directory>
+        </Directory>
+        <Feature Id="TwampGuiFiles" Level="1" Title="Twamp Gui" ConfigurableDirectory="INSTALLDIR">
+            <ComponentRef Id="comp_INSTALLDIR" />
+            <ComponentRef Id="comp_libegl.dll" />
+            <ComponentRef Id="comp_libgcc_s_seh_1.dll" />
+            <ComponentRef Id="comp_libglesv2.dll" />
+            <ComponentRef Id="comp_libstdc___6.dll" />
+            <ComponentRef Id="comp_libwinpthread_1.dll" />
+            <ComponentRef Id="comp_qt5core.dll" />
+            <ComponentRef Id="comp_qt5gui.dll" />
+            <ComponentRef Id="comp_qt5network.dll" />
+            <ComponentRef Id="comp_qt5qml.dll" />
+            <ComponentRef Id="comp_qt5qmlmodels.dll" />
+            <ComponentRef Id="comp_qt5qmlworkerscript.dll" />
+            <ComponentRef Id="comp_qt5quick.dll" />
+            <ComponentRef Id="comp_qt5quickcontrols2.dll" />
+            <ComponentRef Id="comp_qt5quicktemplates2.dll" />
+            <ComponentRef Id="comp_qt5quicktest.dll" />
+            <ComponentRef Id="comp_qt5websockets.dll" />
+            <ComponentRef Id="comp_qt5widgets.dll" />
+            <ComponentRef Id="comp_twamp_client.exe" />
+            <ComponentRef Id="comp_twamp_responder.exe" />
+            <ComponentRef Id="comp_twamp_gui_shortcuts" />
+            <ComponentRef Id="comp_platforms_qwindows.dll" />
+            <ComponentRef Id="comp_qtquick_controls_applicationwindow.qml" />
+            <ComponentRef Id="comp_qtquick_controls_applicationwindow.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_busyindicator.qml" />
+            <ComponentRef Id="comp_qtquick_controls_busyindicator.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_button.qml" />
+            <ComponentRef Id="comp_qtquick_controls_button.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_calendar.qml" />
+            <ComponentRef Id="comp_qtquick_controls_calendar.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_checkbox.qml" />
+            <ComponentRef Id="comp_qtquick_controls_checkbox.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_combobox.qml" />
+            <ComponentRef Id="comp_qtquick_controls_combobox.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_groupbox.qml" />
+            <ComponentRef Id="comp_qtquick_controls_groupbox.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_label.qml" />
+            <ComponentRef Id="comp_qtquick_controls_label.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_menu.qml" />
+            <ComponentRef Id="comp_qtquick_controls_menu.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_menubar.qml" />
+            <ComponentRef Id="comp_qtquick_controls_menubar.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_plugins.qmltypes" />
+            <ComponentRef Id="comp_qtquick_controls_progressbar.qml" />
+            <ComponentRef Id="comp_qtquick_controls_progressbar.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_qmldir" />
+            <ComponentRef Id="comp_qtquick_controls_qtquickcontrolsplugin.dll" />
+            <ComponentRef Id="comp_qtquick_controls_radiobutton.qml" />
+            <ComponentRef Id="comp_qtquick_controls_radiobutton.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_scrollview.qml" />
+            <ComponentRef Id="comp_qtquick_controls_scrollview.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_slider.qml" />
+            <ComponentRef Id="comp_qtquick_controls_slider.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_spinbox.qml" />
+            <ComponentRef Id="comp_qtquick_controls_spinbox.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_splitview.qml" />
+            <ComponentRef Id="comp_qtquick_controls_splitview.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_stackview.qml" />
+            <ComponentRef Id="comp_qtquick_controls_stackview.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_stackviewdelegate.qml" />
+            <ComponentRef Id="comp_qtquick_controls_stackviewdelegate.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_stackviewtransition.qml" />
+            <ComponentRef Id="comp_qtquick_controls_stackviewtransition.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_statusbar.qml" />
+            <ComponentRef Id="comp_qtquick_controls_statusbar.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_switch.qml" />
+            <ComponentRef Id="comp_qtquick_controls_switch.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_tab.qml" />
+            <ComponentRef Id="comp_qtquick_controls_tab.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_tableview.qml" />
+            <ComponentRef Id="comp_qtquick_controls_tableview.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_tableviewcolumn.qml" />
+            <ComponentRef Id="comp_qtquick_controls_tableviewcolumn.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_tabview.qml" />
+            <ComponentRef Id="comp_qtquick_controls_tabview.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_textarea.qml" />
+            <ComponentRef Id="comp_qtquick_controls_textarea.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_textfield.qml" />
+            <ComponentRef Id="comp_qtquick_controls_textfield.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_toolbar.qml" />
+            <ComponentRef Id="comp_qtquick_controls_toolbar.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_toolbutton.qml" />
+            <ComponentRef Id="comp_qtquick_controls_toolbutton.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_treeview.qml" />
+            <ComponentRef Id="comp_qtquick_controls_treeview.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_abstractcheckable.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_abstractcheckable.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_basicbutton.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_basicbutton.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_basictableview.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_basictableview.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_calendarheadermodel.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_calendarheadermodel.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_calendarutils.js" />
+            <ComponentRef Id="comp_qtquick_controls_private_calendarutils.jsc" />
+            <ComponentRef Id="comp_qtquick_controls_private_columnmenucontent.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_columnmenucontent.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_contentitem.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_contentitem.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_control.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_control.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_editmenu.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_editmenu.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_editmenu_base.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_editmenu_base.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_fastglow.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_fastglow.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_focusframe.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_focusframe.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_hoverbutton.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_hoverbutton.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_menucontentitem.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_menucontentitem.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_menucontentscroller.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_menucontentscroller.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_menuitemsubcontrols.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_menuitemsubcontrols.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_modalpopupbehavior.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_modalpopupbehavior.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_qmldir" />
+            <ComponentRef Id="comp_qtquick_controls_private_scrollbar.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_scrollbar.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_scrollviewhelper.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_scrollviewhelper.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_sourceproxy.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_sourceproxy.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_stackview.js" />
+            <ComponentRef Id="comp_qtquick_controls_private_stackview.jsc" />
+            <ComponentRef Id="comp_qtquick_controls_private_stackviewslidedelegate.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_stackviewslidedelegate.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_style.js" />
+            <ComponentRef Id="comp_qtquick_controls_private_style.jsc" />
+            <ComponentRef Id="comp_qtquick_controls_private_style.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_style.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_systempalettesingleton.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_systempalettesingleton.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_tabbar.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_tabbar.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_tableviewitemdelegateloader.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_tableviewitemdelegateloader.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_tableviewselection.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_tableviewselection.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_texthandle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_texthandle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_textinputwithhandles.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_textinputwithhandles.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_textsingleton.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_textsingleton.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_toolmenubutton.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_toolmenubutton.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_private_treeviewitemdelegateloader.qml" />
+            <ComponentRef Id="comp_qtquick_controls_private_treeviewitemdelegateloader.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_qmldir" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_applicationwindowstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_applicationwindowstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_basictableviewstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_basictableviewstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_busyindicatorstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_busyindicatorstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_buttonstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_buttonstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_calendarstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_calendarstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_checkboxstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_checkboxstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_circularbuttonstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_circularbuttonstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_circulargaugestyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_circulargaugestyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_circulartickmarklabelstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_circulartickmarklabelstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_comboboxstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_comboboxstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_commonstylehelper.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_commonstylehelper.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_delaybuttonstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_delaybuttonstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_dialstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_dialstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_focusframestyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_focusframestyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_gaugestyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_gaugestyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_groupboxstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_groupboxstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_handlestyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_handlestyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_handlestylehelper.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_handlestylehelper.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_menubarstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_menubarstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_menustyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_menustyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_piemenustyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_piemenustyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_progressbarstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_progressbarstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_radiobuttonstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_radiobuttonstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_scrollviewstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_scrollviewstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_sliderstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_sliderstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_spinboxstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_spinboxstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_statusbarstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_statusbarstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_statusindicatorstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_statusindicatorstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_switchstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_switchstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_tableviewstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_tableviewstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_tabviewstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_tabviewstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_textareastyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_textareastyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_textfieldstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_textfieldstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_togglebuttonstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_togglebuttonstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_toolbarstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_toolbarstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_toolbuttonstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_toolbuttonstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_treeviewstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_treeviewstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_tumblerstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_tumblerstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_arrow_down.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_arrow_down_2x.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_arrow_left.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_arrow_left_2x.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_arrow_right.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_arrow_right_2x.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_arrow_up.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_arrow_up_2x.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_button.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_button_down.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_check.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_check_2x.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_editbox.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_focusframe.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_groupbox.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_header.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_knob.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_leftanglearrow.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_needle.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_progress_indeterminate.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_rightanglearrow.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_scrollbar_handle_horizontal.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_scrollbar_handle_transient.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_scrollbar_handle_vertical.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_slider_groove.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_slider_handle.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_spinner_large.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_spinner_medium.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_spinner_small.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_tab.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_base_images_tab_selected.png" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_applicationwindowstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_applicationwindowstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_busyindicatorstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_busyindicatorstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_buttonstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_buttonstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_calendarstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_calendarstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_checkboxstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_checkboxstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_comboboxstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_comboboxstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_focusframestyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_focusframestyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_groupboxstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_groupboxstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_menubarstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_menubarstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_menustyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_menustyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_progressbarstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_progressbarstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_qmldir" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_radiobuttonstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_radiobuttonstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_rowitemsingleton.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_rowitemsingleton.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_scrollviewstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_scrollviewstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_sliderstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_sliderstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_spinboxstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_spinboxstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_statusbarstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_statusbarstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_switchstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_switchstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_tableviewstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_tableviewstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_tabviewstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_tabviewstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_textareastyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_textareastyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_textfieldstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_textfieldstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_toolbarstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_toolbarstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_toolbuttonstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_toolbuttonstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_treeviewstyle.qml" />
+            <ComponentRef Id="comp_qtquick_controls_styles_desktop_treeviewstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_controls_styles_flat_plugins.qmltypes" />
+            <ComponentRef Id="comp_qtquick_controls_styles_flat_qmldir" />
+            <ComponentRef Id="comp_qtquick_controls_styles_flat_qtquickextrasflatplugin.dll" />
+            <ComponentRef Id="comp_qtquick_dialogs_defaultcolordialog.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_defaultcolordialog.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_defaultdialogwrapper.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_defaultdialogwrapper.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_defaultfiledialog.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_defaultfiledialog.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_defaultfontdialog.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_defaultfontdialog.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_defaultmessagedialog.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_defaultmessagedialog.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_dialogplugin.dll" />
+            <ComponentRef Id="comp_qtquick_dialogs_plugins.qmltypes" />
+            <ComponentRef Id="comp_qtquick_dialogs_qmldir" />
+            <ComponentRef Id="comp_qtquick_dialogs_widgetcolordialog.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_widgetcolordialog.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_widgetfiledialog.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_widgetfiledialog.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_widgetfontdialog.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_widgetfontdialog.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_widgetmessagedialog.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_widgetmessagedialog.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_images_checkers.png" />
+            <ComponentRef Id="comp_qtquick_dialogs_images_checkmark.png" />
+            <ComponentRef Id="comp_qtquick_dialogs_images_copy.png" />
+            <ComponentRef Id="comp_qtquick_dialogs_images_critical.png" />
+            <ComponentRef Id="comp_qtquick_dialogs_images_crosshairs.png" />
+            <ComponentRef Id="comp_qtquick_dialogs_images_information.png" />
+            <ComponentRef Id="comp_qtquick_dialogs_images_question.png" />
+            <ComponentRef Id="comp_qtquick_dialogs_images_slider_handle.png" />
+            <ComponentRef Id="comp_qtquick_dialogs_images_sunken_frame.png" />
+            <ComponentRef Id="comp_qtquick_dialogs_images_warning.png" />
+            <ComponentRef Id="comp_qtquick_dialogs_images_window_border.png" />
+            <ComponentRef Id="comp_qtquick_dialogs_private_dialogsprivateplugin.dll" />
+            <ComponentRef Id="comp_qtquick_dialogs_private_plugins.qmltypes" />
+            <ComponentRef Id="comp_qtquick_dialogs_private_qmldir" />
+            <ComponentRef Id="comp_qtquick_dialogs_qml_colorslider.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_qml_colorslider.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_qml_defaultwindowdecoration.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_qml_defaultwindowdecoration.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_qml_iconbuttonstyle.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_qml_iconbuttonstyle.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_qml_iconglyph.qml" />
+            <ComponentRef Id="comp_qtquick_dialogs_qml_iconglyph.qmlc" />
+            <ComponentRef Id="comp_qtquick_dialogs_qml_icons.ttf" />
+            <ComponentRef Id="comp_qtquick_dialogs_qml_qmldir" />
+            <ComponentRef Id="comp_qtquick_layouts_plugins.qmltypes" />
+            <ComponentRef Id="comp_qtquick_layouts_qmldir" />
+            <ComponentRef Id="comp_qtquick_layouts_qquicklayoutsplugin.dll" />
+            <ComponentRef Id="comp_qtquick_privatewidgets_plugins.qmltypes" />
+            <ComponentRef Id="comp_qtquick_privatewidgets_qmldir" />
+            <ComponentRef Id="comp_qtquick_privatewidgets_widgetsplugin.dll" />
+            <ComponentRef Id="comp_qtquick_window.2_plugins.qmltypes" />
+            <ComponentRef Id="comp_qtquick_window.2_qmldir" />
+            <ComponentRef Id="comp_qtquick_window.2_windowplugin.dll" />
+            <ComponentRef Id="comp_qtquick.2_plugins.qmltypes" />
+            <ComponentRef Id="comp_qtquick.2_qmldir" />
+            <ComponentRef Id="comp_qtquick.2_qtquick2plugin.dll" />
+            <ComponentRef Id="comp_styles_qwindowsvistastyle.dll" />
+        </Feature>
+        <MajorUpgrade AllowDowngrades="no" DowngradeErrorMessage="A newer version of [ProductName] is already installed." AllowSameVersionUpgrades="no" />
+        <Media Id="1" Cabinet="cab1.cab" EmbedCab="yes" />
+        <UIRef Id="WixUI_InstallDir" />
+        <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+        <Property Id="MSIRESTARTMANAGERCONTROL" Value="Disable" />
+        <Icon Id="TwampClient.ico" SourceFile="assets\TwampClient.ico"/>
+        <Property Id="ARPPRODUCTICON" Value="TwampClient.ico" />
+        <WixVariable Id="WixUIDialogBmp" Value="assets\Twamp_Install_Background.jpg"/>
+        <WixVariable Id="WixUIBannerBmp" Value="assets\Twamp_Install_Top.jpg"/>
+        <WixVariable Id="WixUILicenseRtf" Value="assets\License.rtf"/>
+        <InstallExecuteSequence>
+            <Custom Action="rememberInstallDir" After="InstallValidate" />
+            <Custom Action="SetARPINSTALLLOCATION" After="InstallValidate" />
+        </InstallExecuteSequence>
+        <InstallUISequence></InstallUISequence>
+    </Product>
+</Wix>
