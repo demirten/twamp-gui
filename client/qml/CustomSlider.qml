@@ -56,7 +56,7 @@ Item {
             Text {
                 id: valueText
                 text: mSlider.value
-                font.pointSize: 12
+                font.pointSize: 10
                 color: "#555"
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter

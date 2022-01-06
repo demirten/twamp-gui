@@ -227,21 +227,21 @@ ApplicationWindow {
                                 Rectangle {
                                     id: logSummary
                                     Layout.fillWidth: true
-                                    implicitHeight: timing.contentHeight + 2
+
+                                    implicitHeight: timing.contentHeight + 4
                                     color: (index % 2 == 1) ? "#e7e7fe" : "#faf0d7"
 
                                     Text {
                                         id: timing
                                         text: modelData.timing
+
                                         color: "black"
                                         font: Qt.font({ family: "Segoe UI, monospace" })
-                                        anchors.verticalCenter: parent.verticalCenter
                                     }
 
                                     Text {
                                         anchors.left: logSummary.left
                                         anchors.leftMargin: 80
-                                        anchors.verticalCenter: parent.verticalCenter
 
                                         color: "black"
                                         font: Qt.font({ family: "Segoe UI, monospace" })
@@ -279,6 +279,7 @@ ApplicationWindow {
                                 ColumnLayout {
                                     id: logDetail
                                     Layout.fillWidth: true
+                                    Layout.alignment: Qt.AlignLeft | Qt.AlignBottom
                                     spacing: 0
 
                                     property int savedHeight: 0

@@ -10,6 +10,7 @@ SOURCES += \
     twamp_test_worker.cpp
 
 RESOURCES += qml/qml.qrc
+RC_ICONS = ../msi/assets/TwampClient.ico
 
 HEADERS += \
     twamp_client.h \
