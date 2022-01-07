@@ -20,7 +20,7 @@ I tried to make twamp gui runs natively on Linux, Windows and MacOSX platforms s
 [v1.0.5](https://github.com/demirten/twamp-gui/releases/download/v1.0.5/twamp-gui_1.0.5-1_amd64.deb)
 
 * Windows Installer:
-[v1.0.7 (win32/64)](https://github.com/demirten/twamp-gui/releases/download/v1.0.7/TwampGuiInstaller-1.0.7.exe)
+[v1.0.8 (win32/64)](https://github.com/demirten/twamp-gui/releases/download/v1.0.8/TwampGui-1.0.8.msi)
 
 * MacOSX Installer:
 [v1.0.5](https://github.com/demirten/twamp-gui/releases/download/v1.0.5/Twamp-1.0.5-Installer.dmg)
