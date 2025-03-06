@@ -20,10 +20,10 @@ HEADERS += \
 INCLUDEPATH += "$$PWD/../common"
 
 CONFIG(debug, debug|release){
-    LIBS += -L"$$PWD/../common/debug" -lcommon
+    LIBS += -L"$$OUT_PWD/../common/debug" -lcommon
 }
 CONFIG(release, debug|release){
-    LIBS += -L"$$PWD/../common" -lcommon
+    LIBS += -L"$$OUT_PWD/../common" -lcommon
 }
 
 OBJECTS_DIR = .obj
